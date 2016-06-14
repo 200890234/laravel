@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Poloniex - Bitcoin/Cryptocurrency Exchange</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="css/normalize.min.css?v=102014" /> -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=102014" />
+    
+    <script src="js/jquery.qtip.min.js" type="text/javascript"></script>
+    <script src="js/plx_global.js" type="text/javascript"></script>
+    <script src="js/headroom.min.js" type="text/javascript"></script>
+    <script src="js/jquery.pin.js" type="text/javascript"></script>
+    <script src="js/jquery.grid-a-licious.min.js"></script> 
+    <script src="js/jquery.actual.js" type="text/javascript"></script> <!-- 获取隐藏元素真是宽高 -->
+    <script src="js/yet_cn.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var loggedIn = false;
+        var dark = false;
+    </script>
+    <!--[if lt IE 9]>  
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>  
+    <![endif]--> 
+</head>
+<body class="feature home">
+    <div class="wrapper">
+		<div class="header header1" id="header">
+            <div class="logo">
+                <a href="/"><img src="images/logo_cn.png" alt="" /></a>
+            </div>
+
+            <div class="tabs">
+                <ul>
+                    <li><a href="/exchange">网络编程</a>
+                        <ul>
+                            <li><a href="/exchange">php&cms</a></li>
+                            <li><a href="/exchange">html&js</a></li>
+                            <li><a href="/exchange">服务器</a></li>
+                            <li><a href="/exchange">Android</a></li>
+                            <li><a href="/exchange">资源/技巧</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/exchange">网络赚钱</a>
+                        <ul>
+                            <li><a href="/exchange">本站精品</a></li>
+                            <li><a href="/exchange">活动资讯</a></li>
+                            <li><a href="/exchange">项目分享</a></li>
+                        </ul>
+                    </li>
+                    <li class="subline"><a href="/giveaways">绝密资料</a>
+                        <ul>
+                            <li><a href="/exchange">资料列表</a></li>
+                            <li><a href="/exchange">免费分享</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/exchange">英语学习</a>
+                        <ul>
+                            <li><a href="/exchange">精品资料</a></li>
+                            <li><a href="/exchange">学习笔记</a></li>
+                        </ul>
+                    </li>
+                    <li class="subline"><a href="/giveaways">生活娱乐</a>
+                        <ul>
+                            <li><a href="/exchange">生活诀窍</a></li>
+                            <li><a href="/exchange">创意恶搞</a></li>
+                            <li><a href="/exchange">社会实验</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/exchange">工具/软件</a>
+                        <ul>
+                            <li><a href="/exchange">编程工具</a></li>
+                            <li><a href="/exchange">娱乐工具</a></li>
+                            <li><a href="/exchange">破解收费</a></li>
+                        </ul>
+                    </li>
+                    <li class="subline"><a href="/giveaways">关于我们</a>
+                        <ul>
+                            <li><a href="/exchange">服务与案例</a></li>
+                            <li><a href="/exchange">本站活动</a></li>
+                            <li><a href="/exchange">常见问答</a></li>
+                        </ul>
+                    </li>
+                    <li class="subline"><a href="/giveaways">精品推荐</a></li>
+                    <li class="subline"><a href="/giveaways">查看更多</a>
+                        <ul>
+                            <li><a href="/exchange">灰色社会</a></li>
+                            <li><a href="/exchange">私密入口</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="clear"></div>
+        <div class="header header2" >
+            <div class="tabs">
+                <ul>
+                    <li><a href="">绝密资料</a></li>
+                    <li><a href="">生活娱乐</a></li>
+                    <li><a href="">关于我们</a></li>
+                    <li><a href="">精品推荐</a></li>
+                    <li><a href="">查看更多</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content"> 
+            <div class="main">
+            <!-- BEGIN CONTENT AREA --> 
+                <div>
+                    <h1 class="standard">Welcome to YETPRESS</h1>
+                    <h2 class="standard">We are a US-based cryptocurrency exchange offering maximum security and advanced trading features.</h2>
+                </div>
+
+                <div class="box_wrapper">
+                    <div class="box-item box-item-right">
+                        <div class="box-item__inner">
+                            <h2 class="box-item__title">We are a US-based cryptocurrency exchange offering maximum security and advanced trading features.</h2>
+                        </div>
+                    </div>
+                    <div class="box-item box-item--container">
+                        <div class="box-item box-item--freecontent box-item--onepager-services">
+                            <div class="box-item__inner">
+                                <h2 class="box-item__title">Services</h2>
+                                <p>In January 2015, eleven regional agencies came together to form a new global agency spanning 17 countries and 40 offices focused on innovation, marketing and business transformation.</p>
+                            </div>
+                        </div>
+                        <div class="box-item box-item--freecontent box-item--onepager-about">
+                            <div class="box-item__inner">
+                                <h2 class="box-item__title">About</h2>
+                                <p>Mirum’s capabilities are organized around Strategy &amp; Consulting services, Creative &amp; Content, User Experience &amp; Platforms, Analytics &amp; Insight and Product Development &amp; Mobile.</p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="box-item box-item--freecontent box-item--onepager-contact">
+                            <div class="box-item__inner">
+                                <h2 class="box-item__title">Media</h2>
+                                <p>A new company with a pioneering spirit and a deep understanding of your local market needs.</p>
+                            </div>
+                        </div>
+                        <div class="box-item box-item--freecontent box-item--onepager-careers">
+                            <div class="box-item__inner">
+                                <h2 class="box-item__title">Press release</h2>
+                                <p>Mirum has launched!<br><strong><a href="/hong-kong/mirum-press-release">Read the press release here.</a></strong>
+                                </p><p><strong>ALL PRESS ENQUIRIES:</strong>
+                                <br>+1 (646) 509-6230 <a href="mailto:press@mirumagency.com">press@mirumagency.com</a></p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                <div class="clear"></div>    
+                </div>
+                <div class="clear"></div>
+                <div class="featureBanner">
+                    <h4 class="standard">All it takes is a valid email address.</h4>
+                    <button class="signUpButton" onClick="window.location.href='/signup'">Create your account</button>
+                    <p>Already a member? <a href="javascript:void(0)" class="standard" id="user_login">测试登陆</a><a href="javascript:void(0)" class="standard" id="user_reg">测试注册</a>.</p>
+                </div>
+					
+                <div class="home3col">
+                    <div class="column">
+                        <div id="chartImg"><img src="/images/theme_light/chart.png" style="width:95px; height:57px;" /></div>
+                        <h4 class="highlight">Best-in-Class Tools</h4>
+                        <ul class="noIndent"><li>SMA and two EMA lines ready for your customization</li>
+                            <li>5-minute, 15-minute, 30-minute, 2-hour, and 4-hour candlesticks</li>
+                            <li>Fully zoomable charts that cover complete market history</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <div id="securityImg"><img src="/images/theme_light/security.png" style="width:95px; height:57px;" /></div>
+                        <h4 class="highlight">For Your Protection</h4>
+                        <ul class="noIndent">
+                            <li>Majority of customer funds kept in cold storage</li>
+                            <li>Entire exchange continually audited and inspected for unusual activity</li>
+                            <li>Two-factor authentication available for your protection</li>
+                        </ul>
+                    </div>
+                    <div class="column last">
+                        <div id="communityImg"><img src="/images/theme_light/community.png" style="width:95px; height:57px;" /></div>
+                        <h4 class="highlight">Community and Support</h4>
+                        <ul class="noIndent"><li>An active, vibrant chatbox community for idea-sharing and updates</li>
+                            <li>Chatbox moderators available to address your immediate questions and concerns</li>
+                        </ul>
+                    </div>
+                  </div>
+                  
+                  
+            <!-- END CONTENT AREA -->
+            </div>
+        </div>
+    <div class="footer">
+      <div class="links">
+        站点站务：<a href="/contact">联系我们</a> | <a href="" target="_blank">商务合作</a>| <a href="">兼职合作</a> | <a href="">服务咨询</a> | <a href="/faq">常见问答</a> | <a href="/terms">网站声明</a> | <a href="">友链申请</a> | <a href="">请求删帖</a>
+      </div>
+      <div class="friendlinks">
+        友情链接：<a href="http://poloniex.freshdesk.com" target="_blank">yetpress</a> | <a href="/faq">FAQ</a> | <a href="/terms">Terms and Conditions</a>
+      </div>
+      <div class="meta">
+        <div class="info">
+            <p>
+                Server time: <strong><span id='serverTime'>2015-02-05 06:44</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
+            </p>
+            <p>&copy; Yetpress, LLC 2014 - Powered by empireCms</p>
+        </div>
+      </div>
+    </div>    
+</div>
+<div class="clear"></div>
+<div class="login user_wrap" style="display:none;">
+    <div class="login-form">
+        <div class="form-group">
+          <input type="text" class="form-control login-field" value="" placeholder="用户名" id="username">
+          <label class="login-field-icon fui-user" for="username"></label>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control login-field" value="" placeholder="密码" id="password">
+          <label class="login-field-icon fui-lock" for="password"></label>
+        </div>
+        <a class="btn btn-success btn-lg btn-user" href="#">登陆</a>
+        <a class="btn btn-primary btn-lg btn-user" href="#">注册</a>
+        <a class="btn btn-close" href="javascript:void(0)">关闭</a>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="reg user_wrap" style="display:none;">
+    <div class="login-form">
+        <div class="form-group">
+          <input type="text" class="form-control login-field" value="" placeholder="用户名*" id="username">
+          <label class="login-field-icon fui-user" for="username"></label>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control login-field" value="" placeholder="密码*" id="password">
+          <label class="login-field-icon fui-lock" for="password"></label>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control login-field" value="" placeholder="重复密码*" id="repassword">
+          <label class="login-field-icon fui-lock" for="repassword"></label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control login-field" value="" placeholder="邮箱*" id="email">
+          <label class="login-field-icon fui-user" for="email"></label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control login-field" value="" placeholder="QQ号码" id="qq">
+          <label class="login-field-icon fui-user" for="qq"></label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control login-field" value="" placeholder="手机号码" id="tel">
+          <label class="login-field-icon fui-user" for="tel"></label>
+        </div>
+        <a class="btn btn-success btn-lg btn-user" href="#">注册</a>
+        <a class="btn btn-primary btn-lg btn-user" href="#">登陆</a>
+        <a class="btn btn-close" href="javascript:void(0)">关闭</a>
+    </div>
+</div>
+<script src="js/jquery.blockUI.js"></script>
+<!-- http://malsup.com/jquery/block/#demos -->
+<script>
+    $("#user_login").click(function(){
+        $.blockUI({
+            message: $(".login"),
+            css: {
+                background:"transparent",
+                border:"none",
+                background:"none",
+                width:"50%",
+                left:"25%",
+                top:"25%",
+                cursor:"default"
+            },
+            overlayCSS:{
+                cursor:"default",
+            }
+        });
+    })
+    $("#user_reg").click(function(){
+        var h=$(".reg").height();
+        var top=($(window).height()-h)/2;
+        // alert(h);
+        $.blockUI({
+            message: $(".reg"),
+            css: {
+                background:"transparent",
+                border:"none",
+                background:"none",
+                width:"50%",
+                left:"25%",
+                top:top,
+                cursor:"default"
+            },
+            overlayCSS:{
+                cursor:"default",
+            }
+        });
+    })
+    $(".btn-close").click(function(){
+        $.unblockUI({
+            message: $(".user_wrap"),
+        });
+    })
+</script>
+</body>
+</html>
+

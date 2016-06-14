@@ -1,0 +1,1 @@
+document.write("<li><a href=\"/affiliate/mall/2015-04-01/1.html\" title=\"测试商品\">测试商品</a></li>");

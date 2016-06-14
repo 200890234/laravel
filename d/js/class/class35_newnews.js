@@ -1,0 +1,1 @@
+document.write("<li><a href=\"http://cn.yetpress.com/test_column/2015-08-28/105.html\" title=\"有道外链测试\">有道外链测试</a></li><li><a href=\"http://cn.yetpress.com/test_column/2015-03-23/62.html\" title=\"视频test2\">视频test2</a></li><li><a href=\"http://cn.yetpress.com/test_column/2015-03-20/61.html\" title=\"视频托管记录\">视频托管记录</a></li>");

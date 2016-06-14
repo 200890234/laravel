@@ -1,0 +1,1 @@
+document.write("<li><a href=\"http://cn.yetpress.com/e/action/ShowInfo.php?classid=45&id=74\" title=\"test\">test</a></li>");

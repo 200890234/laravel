@@ -1,0 +1,21 @@
+<?php
+@include("../../inc/header.php");
+
+/*
+		SoftName : EmpireBak
+		Author   : wm_chief
+		Copyright: Powered by www.phome.net
+*/
+
+E_D("DROP TABLE IF EXISTS `cn_enewsshopdd_add`;");
+E_C("CREATE TABLE `cn_enewsshopdd_add` (
+  `ddid` int(10) unsigned NOT NULL DEFAULT '0',
+  `buycar` mediumtext NOT NULL,
+  `bz` text NOT NULL,
+  `retext` text NOT NULL,
+  PRIMARY KEY (`ddid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8");
+E_D("replace into `cn_enewsshopdd_add` values('1','|44,1||2|12.00|0|测试商品!','','');");
+
+@include("../../inc/footer.php");
+?>

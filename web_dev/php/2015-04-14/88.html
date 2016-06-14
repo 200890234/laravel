@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>yetpress - php：PHP魔术方法和魔术常量/变量 - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content=" 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料"/>
+<meta name="description" content=" 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料" />
+    <link rel="stylesheet" href="http://cn.yetpress.com/skin/yetpress_cn/bootstrap/css/bootstrap.min.css">
+    <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://cn.yetpress.com/skin/yetpress_cn/css/style.css?v=102014" />
+
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/js/jcarousellite.js" type="text/javascript"></script>   
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/js/jquery.qtip.min.js" type="text/javascript"></script>
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/js/plx_global.js" type="text/javascript"></script>
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/js/headroom.min.js" type="text/javascript"></script>
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/js/jquery.pin.js" type="text/javascript"></script>
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/js/jquery.grid-a-licious.min.js"></script> 
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/js/jquery.actual.js" type="text/javascript"></script> <!-- 获取隐藏元素真是宽高 -->
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/js/MSClass.js" type="text/javascript"></script>
+    <script src="http://cn.yetpress.com/skin/yetpress_cn/js/yet_cn.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var loggedIn = false;
+        var dark = false;
+    </script>
+    <!--[if lt IE 9]>  
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>  
+    <![endif]-->
+    <SCRIPT LANGUAGE=JavaScript>
+    <!--
+    function getLight(pars){if(pars=="open"){close_light(this)}else{close_light(this)}};function thisMovie(movieName){if(navigator.appName.indexOf("Microsoft")!=-1){return window[movieName]}else{return document[movieName]}}
+    //-->
+    </SCRIPT> 
+</head>
+<body class="feature home">
+    <div class="wrapper">
+        <div class="header header1" id="header">
+            <div class="logo">
+                <a href="http://cn.yetpress.com/"><img src="http://cn.yetpress.com/skin/yetpress_cn/images/logo_cn.png" alt="" /></a>
+            </div>
+
+            <div class="tabs">
+                <ul>
+                    <li><a href="http://cn.yetpress.com/web_dev/">网络编程</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/web_dev/php/">php&amp;cms</a></li>
+                                                            <li><a href="http://cn.yetpress.com/web_dev/databases/">数据库</a></li>
+                                                            <li><a href="http://cn.yetpress.com/web_dev/html_js/">html&amp;js</a></li>
+                                                            <li><a href="http://cn.yetpress.com/web_dev/server/">服务器</a></li>
+                                                            <li><a href="http://cn.yetpress.com/web_dev/android/">Android</a></li>
+                                                            <li><a href="http://cn.yetpress.com/web_dev/tips/">资源/技巧</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li><a href="http://cn.yetpress.com/marketer/">网络赚钱</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/marketer/yetpress/">本站精品</a></li>
+                                                            <li><a href="http://cn.yetpress.com/marketer/information/">活动资讯</a></li>
+                                                            <li><a href="http://cn.yetpress.com/marketer/projects/">项目分享</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li><a href="http://cn.yetpress.com/secret_stuff/">绝密资料</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/secret_stuff/resource_list/">资料列表</a></li>
+                                                            <li><a href="http://cn.yetpress.com/secret_stuff/free_samples/">免费分享</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li><a href="http://cn.yetpress.com/english/">英语学习</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/english/materials/">精品资料</a></li>
+                                                            <li><a href="http://cn.yetpress.com/english/learning_notes/">学习笔记</a></li>
+                                                            <li><a href="http://cn.yetpress.com/english/entertainment/">Entertainment</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li class="subline"><a href="http://cn.yetpress.com/life/">生活娱乐</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/life/life_tips/">生活诀窍</a></li>
+                                                            <li><a href="http://cn.yetpress.com/life/ideas/">创意恶搞</a></li>
+                                                            <li><a href="http://cn.yetpress.com/life/social_experience/">社会实验</a></li>
+                                                            <li><a href="http://cn.yetpress.com/life/sexy_stuff/">大型福利</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li class="subline"><a href="http://cn.yetpress.com/tools/">工具/软件</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/tools/programme_tools/">网络/营销</a></li>
+                                                            <li><a href="http://cn.yetpress.com/tools/creation_tools/">生活/娱乐</a></li>
+                                                            <li><a href="http://cn.yetpress.com/tools/cracks/">破解收费</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li class="subline"><a href="http://cn.yetpress.com/about/">关于我们</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/about/our_service/">服务与案例</a></li>
+                                                            <li><a href="http://cn.yetpress.com/about/our_activities/">本站活动</a></li>
+                                                            <li><a href="http://cn.yetpress.com/about/faq/">常见问答</a></li>
+                                                            <li><a href="http://cn.yetpress.com/about/notice/">公告信息</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li class="subline"><a href="http://cn.yetpress.com/affiliate/">精品推荐</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/affiliate/mall/">yetpress商城</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li class="subline"><a href="http://cn.yetpress.com/additional/">查看更多</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/additional/social_negtive/">灰色社会</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="clear"></div>
+        <div class="header header2" >
+            <div class="tabs">
+                <ul>
+                    <li><a href="life/">生活娱乐</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/life/life_tips/">生活诀窍</a></li>
+                                                            <li><a href="http://cn.yetpress.com/life/ideas/">创意恶搞</a></li>
+                                                            <li><a href="http://cn.yetpress.com/life/social_experience/">社会实验</a></li>
+                                                            <li><a href="http://cn.yetpress.com/life/sexy_stuff/">大型福利</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li><a href="tools/">工具/软件</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/tools/programme_tools/">网络/营销</a></li>
+                                                            <li><a href="http://cn.yetpress.com/tools/creation_tools/">生活/娱乐</a></li>
+                                                            <li><a href="http://cn.yetpress.com/tools/cracks/">破解收费</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li><a href="about/">关于我们</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/about/our_service/">服务与案例</a></li>
+                                                            <li><a href="http://cn.yetpress.com/about/our_activities/">本站活动</a></li>
+                                                            <li><a href="http://cn.yetpress.com/about/faq/">常见问答</a></li>
+                                                            <li><a href="http://cn.yetpress.com/about/notice/">公告信息</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li><a href="affiliate/">精品推荐</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/affiliate/mall/">yetpress商城</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                    <li><a href="additional/">查看更多</a>
+                        <ul>
+                                                            <li><a href="http://cn.yetpress.com/additional/social_negtive/">灰色社会</a></li>
+                                                                   
+                        </ul>  
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!--<div class="list_bannerads">
+            <ul>
+                <li style="width:20%"><script src="/d/js/acmsd/thea4.js"></script></li>
+                <li style="width:60.9%"><script src="/d/js/acmsd/thea2.js"></script></li>
+                <li style="width:19.1%"><script src="/d/js/acmsd/thea3.js"></script></li>
+                <div class="clear"></div>
+            </ul>
+            
+        </div>-->
+        <DIV class="close_light_bg" id="close_light_bg"></DIV> <!-- 关灯 背景层 播放器跨终端 -->
+        <div class="content"> 
+            <div class="main">
+            <!-- BEGIN CONTENT AREA -->
+                <div class="list_main">
+                    <div class="list_left">
+                        <div class="topclass">
+                            网络编程                        </div>
+                        <!--<div class="user_form">
+                            <a href="javascript:void(0)" class="user_login">登录</a>
+                            <a href="javascript:void(0)" class="user_reg">注册</a>
+                        </div>-->
+                        <script src="http://cn.yetpress.com/e/member/login/loginjs_yetcn.php"></script>
+                        <ul class="left_navul">
+                                                        <li><a href="http://cn.yetpress.com/web_dev/php/" class='left_navon'>php&amp;cms</a></li>
+                                                        <li><a href="http://cn.yetpress.com/web_dev/html_js/" >html&amp;js</a></li>
+                                                        <li><a href="http://cn.yetpress.com/web_dev/server/" >服务器</a></li>
+                                                        <li><a href="http://cn.yetpress.com/web_dev/android/" >Android</a></li>
+                                                        <li><a href="http://cn.yetpress.com/web_dev/tips/" >资源/技巧</a></li>
+                                                        <li><a href="http://cn.yetpress.com/web_dev/databases/" >数据库</a></li>
+                                                        <div class="clear"></div>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="list_middle">
+                        <div class="intro_title">
+                            <div class="crumb">
+                                位置：<a href="http://cn.yetpress.com/">首页</a>&nbsp;>&nbsp;<a href="http://cn.yetpress.com/web_dev/">网络编程</a>&nbsp;>&nbsp;<a href="http://cn.yetpress.com/web_dev/php/">php&amp;cms</a>                            </div>
+                            <div id="intro_title_wrap">点击展开栏目简介</div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="intro_text">
+                                                                                    <pre>php技术和开源cms使用</pre>
+                                                    </div>
+                        <div class="clear"></div>
+                        <div class="article_content">
+                            <div class="content_title"><h4>php：PHP魔术方法和魔术常量/变量</h4></div>
+                            <div class="article_info">
+                                发布时间：2015-04-14 &nbsp;&nbsp;
+                                发布者：mervyn &nbsp;&nbsp;
+                                <!-- 字体大小：12px 14px&nbsp; -->
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=88&info_url=http://cn.yetpress.com/web_dev/php/2015-04-14/88.html">[ 信息报错 ]</a>
+                                <a href="">[ 意见建议 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=88&info_url=http://cn.yetpress.com/web_dev/php/2015-04-14/88.html">[ 请求删帖 ]</a>
+                                <a href="javascript:void(0);" class="font-bigger">[ bigger ]</a>
+                            </div>
+                            <div class="clear"></div>
+                            <style type="text/css">
+                                .video {
+                                    OVERFLOW:hidden;
+                                    WIDTH:100%;
+                                    POSITION:relative;
+                                }
+                                .close_light_bg{
+                                    DISPLAY:none;
+                                    BACKGROUND:#000;
+                                    FILTER:alpha(opacity=95);
+                                    LEFT:0px;
+                                    WIDTH:100%;
+                                    POSITION:absolute;
+                                    TOP:0px;
+                                    HEIGHT:100%;
+                                    opacity:.95
+                                }
+                            </style>
+                                                        <div class="video_share" style="margin-top:10px;float:right;margin-right:2%;">
+                                <!-- JiaThis Button BEGIN -->
+                                <div id="ckepop" style="font-size:14px;">
+                                    <span class="jiathis_txt">分享到：</span>
+                                    <a class="jiathis_button_weixin">微信</a> 
+                                    <a class="jiathis_button_tsina">新浪微博</a> 
+                                    <a href="http://www.jiathis.com/share"  class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+                                    <a class="jiathis_counter_style"></a> </div> 
+                                    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1" charset="utf-8"></script>
+                                </div> <!-- JiaThis Button END -->
+                            </div>
+                            <div class="clear"></div>
+                            <div class="content_body">
+                                <p><a href="http://php.net/manual/zh/language.oop5.magic.php"><span style="font-size: medium;">http://php.net/manual/zh/language.oop5.magic.php</span></a></p>
+<p><span style="font-size: larger;">__construct()， __destruct()， __call()， __callStatic()， __get()， __set()， __isset()， __unset()， __sleep()，__wakeup()， __toString()， __invoke()， __set_state()， __clone() 和 __debugInfo()</span></p>
+<p>具体的解释如下：</p>
+<p>1、__construct()</p>
+<p>实例化对象时被调用，</p>
+<p>当__construct和以类名为函数名的函数同时存在时，__construct将被调用，另一个不被调用。</p>
+<p>2、__destruct()</p>
+<p>当删除一个对象或对象操作终止时被调用。</p>
+<p>3、__call()</p>
+<p>对象调用某个方法，</p>
+<p>若方法存在，则直接调用；</p>
+<p>若不存在，则会去调用__call函数。</p>
+<p>4、__get()</p>
+<p>读取一个对象的属性时，</p>
+<p>若属性存在，则直接返回属性值；</p>
+<p>若不存在，则会调用__get函数。</p>
+<p>5、__set()</p>
+<p>设置一个对象的属性时，</p>
+<p>若属性存在，则直接赋值；</p>
+<p>若不存在，则会调用__set函数。</p>
+<p>6、__toString()</p>
+<p>打印一个对象的时被调用。如echo $obj;或print $obj;</p>
+<p>7、__clone()</p>
+<p>克隆对象时被调用。如：$t=new Test();$t1=clone $t;</p>
+<p>8、__sleep()</p>
+<p>serialize之前被调用。若对象比较大，想删减一点东东再序列化，可考虑一下此函数。</p>
+<p>9、__wakeup()</p>
+<p>unserialize时被调用，做些对象的初始化工作。</p>
+<p>10、__isset()</p>
+<p>检测一个对象的属性是否存在时被调用。如：isset($c-&gt;name)。</p>
+<p>11、__unset()</p>
+<p>unset一个对象的属性时被调用。如：unset($c-&gt;name)。</p>
+<p>12、__set_state()</p>
+<p>调用var_export时，被调用。用__set_state的返回值做为var_export的返回值。</p>
+<p>13、__autoload()</p>
+<p>实例化一个对象时，如果对应的类不存在，则该方法被调用。</p>
+<p><span style="font-size: large;"><strong>魔术常量：</strong></span></p>
+<p>1、__LINE__</p>
+<p>返回文件中的当前行号。</p>
+<p>2、__FILE__</p>
+<p>返回文件的完整路径和文件名。如果用在包含文件中，则返回包含文件名。自 PHP 4.0.2 起，__FILE__ 总是包含一个绝对路径，而在此之前的版本有时会包含一个相对路径。</p>
+<p>3、__FUNCTION__</p>
+<p>返回函数名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该函数被定义时的名字（区分大小写）。在 PHP 4 中该值总是小写字母的。</p>
+<p>4、__CLASS__</p>
+<p>返回类的名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该类被定义时的名字（区分大小写）。在 PHP 4 中该值总是小写字母的。</p>
+<p>5、__METHOD__</p>
+<p>返回类的方法名（PHP 5.0.0 新加）。返回该方法被定义时的名字（区分大小写）。</p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><strong>魔术变量</strong></span></p>
+<h2 style="font-size: 22px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 10px; margin-bottom: 10px;">__LINE__</h2>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">文件中的当前行号。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">实例:</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+&lt;?php
+echo '这是第 &ldquo; '  . __LINE__ . ' &rdquo; 行';
+?&gt;
+</pre>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">以上实例输出结果为：</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+这是第 &ldquo; 2 &rdquo; 行
+</pre>
+<hr style="color: rgb(212, 212, 212); height: 1px; border: 0px; clear: both; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: rgb(212, 212, 212);" />
+<h2 style="font-size: 22px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 10px; margin-bottom: 10px;">__FILE__</h2>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">自 PHP 4.0.2 起，__FILE__ 总是包含一个绝对路径（如果是符号连接，则是解析后的绝对路径），而在此之前的版本有时会包含一个相对路径。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">实例:</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+&lt;?php
+echo '该文件位于 &ldquo; '  . __FILE__ . ' &rdquo; ';
+?&gt;
+</pre>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">以上实例输出结果为：</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+该文件位于 &ldquo; E:\wamp\www\test\index.php &rdquo;
+</pre>
+<hr style="color: rgb(212, 212, 212); height: 1px; border: 0px; clear: both; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: rgb(212, 212, 212);" />
+<h2 style="font-size: 22px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 10px; margin-bottom: 10px;">__DIR__</h2>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">文件所在的目录。如果用在被包括文件中，则返回被包括的文件所在的目录。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">它等价于 dirname(__FILE__)。除非是根目录，否则目录中名不包括末尾的斜杠。（PHP 5.3.0中新增）</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">实例:</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+&lt;?php
+echo '该文件位于 &ldquo; '  . __DIR__ . ' &rdquo; ';
+?&gt;
+</pre>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">以上实例输出结果为：</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+该文件位于 &ldquo; E:\wamp\www\test &rdquo;
+</pre>
+<hr style="color: rgb(212, 212, 212); height: 1px; border: 0px; clear: both; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: rgb(212, 212, 212);" />
+<h2 style="font-size: 22px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 10px; margin-bottom: 10px;">__FUNCTION__</h2>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">函数名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该函数被定义时的名字（区分大小写）。在 PHP 4 中该值总是小写字母的。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">实例:</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+&lt;?php
+function test() {
+	echo  '函数名为：' . __FUNCTION__ ;
+}
+test();
+?&gt;
+</pre>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">以上实例输出结果为：</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+函数名为：test
+</pre>
+<hr style="color: rgb(212, 212, 212); height: 1px; border: 0px; clear: both; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: rgb(212, 212, 212);" />
+<h2 style="font-size: 22px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 10px; margin-bottom: 10px;">__CLASS__</h2>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">类的名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该类被定义时的名字（区分大小写）。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">在 PHP 4 中该值总是小写字母的。类名包括其被声明的作用区域（例如 Foo\Bar）。注意自 PHP 5.4 起 __CLASS__ 对 trait 也起作用。当用在 trait 方法中时，__CLASS__ 是调用 trait 方法的类的名字。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">实例:</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+&lt;?php
+&lt;?php
+class test {
+	function _print() {
+		echo '类名为：'  . __CLASS__ . &quot;&lt;br&gt;&quot;;
+		echo  '函数名为：' . __FUNCTION__ ;
+	}
+}
+$t = new test();
+$t-&gt;_print();
+?&gt;
+</pre>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">以上实例输出结果为：</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+类名为：test
+函数名为：_print
+</pre>
+<hr style="color: rgb(212, 212, 212); height: 1px; border: 0px; clear: both; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: rgb(212, 212, 212);" />
+<h2 style="font-size: 22px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 10px; margin-bottom: 10px;">__TRAIT__</h2>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">Trait 的名字（PHP 5.4.0 新加）。自 PHP 5.4.0 起，PHP 实现了代码复用的一个方法，称为 traits。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">Trait 名包括其被声明的作用区域（例如 Foo\Bar）。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">从基类继承的成员被插入的 SayWorld Trait 中的 MyHelloWorld 方法所覆盖。其行为 MyHelloWorld 类中定义的方法一致。优先顺序是当前类中的方法会覆盖 trait 方法，而 trait 方法又覆盖了基类中的方法。</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+&lt;?php
+class Base {
+    public function sayHello() {
+        echo 'Hello ';
+    }
+}
+
+trait SayWorld {
+    public function sayHello() {
+        parent::sayHello();
+        echo 'World!';
+    }
+}
+
+class MyHelloWorld extends Base {
+    use SayWorld;
+}
+
+$o = new MyHelloWorld();
+$o-&gt;sayHello();
+?&gt;
+</pre>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">以上例程会输出：</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+Hello World!
+</pre>
+<hr style="color: rgb(212, 212, 212); height: 1px; border: 0px; clear: both; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: rgb(212, 212, 212);" />
+<h2 style="font-size: 22px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 10px; margin-bottom: 10px;">__METHOD__</h2>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">类的方法名（PHP 5.0.0 新加）。返回该方法被定义时的名字（区分大小写）。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">实例:</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+&lt;?php
+function test() {
+	echo  '函数名为：' . __METHOD__ ;
+}
+test();
+?&gt;
+</pre>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">以上实例输出结果为：</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+函数名为：test
+</pre>
+<hr style="color: rgb(212, 212, 212); height: 1px; border: 0px; clear: both; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: rgb(212, 212, 212);" />
+<h2 style="font-size: 22px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 10px; margin-bottom: 10px;">__NAMESPACE__</h2>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">当前命名空间的名称（区分大小写）。此常量是在编译时定义的（PHP 5.3.0 新增）。</p>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">实例:</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+&lt;?php
+namespace MyProject;
+
+echo '命名空间为：&quot;', __NAMESPACE__, '&quot;'; // 输出 &quot;MyProject&quot;
+?&gt;
+</pre>
+<p style="line-height: 16.799999237060547px; font-family: 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;">以上实例输出结果为：</p>
+<pre style="margin: 15px auto; line-height: 20px; font-family: 'courier new'; word-break: break-all; word-wrap: break-word; border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(221, 221, 221); padding: 10px 15px; background: url(http://www.w3cschool.cc/images/codecolorer_bg.gif) 50% 0% rgb(251, 251, 251);">
+命名空间为：&quot;MyProject&quot;</pre>
+<p>&nbsp;</p>                            </div>
+                            <div class="article_pager"></div>
+                            <div class="article_prenext">
+                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2015-04-14/87.html" title="php：PHP系统类函数">php：PHP系统类函数</a></p>
+                                                                                                    <p>下篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-12/175.html" title="Laravel：配置文件知识点">Laravel：配置文件知识点</a></p>
+                                                            </div>
+                            <div class="clear"></div>
+<script>
+function CheckPl(obj){
+    if(obj.saytext.value==""){
+        alert("您没什么话要说吗？");
+        obj.saytext.focus();
+        return false;
+    }
+    return true;
+}
+</script>
+<div class="article_comment">
+    <form action="http://cn.yetpress.com/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+        <div class="comment_title"><span>发表评论</span>
+            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=88&down=2"></script></span>​条评论</a>​
+        </div>
+        <script>
+        $(function(){
+            var url="http://cn.yetpress.com/e/pl/?classid=10&id=88";
+            $('.comment_count').click(function(){
+                //评论数链接不正常 改用window.open控制
+                window.open(url);
+            })
+        })
+        </script>
+        <div class="comment_area">
+            <div class="comment_text">
+                <textarea name="saytext" id="saytext" class="form-control"></textarea>
+            </div>
+            <div class="comment_userinfo">
+                <ul>
+                    <li>
+                        <input type="text" class="comment_box form-control" name="username" id="username" placeholder="用户名">
+                    </li>
+                    <li>
+                        <input type="password" class="comment_box form-control" name="password" id="password" placeholder="密码">
+                    </li>
+                    <li>
+                        <input type="key" class="comment_box form-control" name="key" id="key" placeholder="验证码">
+                        <img src="http://cn.yetpress.com/e/ShowKey/?v=pl" align="absmiddle">
+                    </li>
+                    <li>
+                        <input name="id" type="hidden" id="id" value="88" />
+                        <input name="classid" type="hidden" id="classid" value="10" />
+                        <input name="enews" type="hidden" id="enews" value="AddPl" />
+                        <input name="repid" type="hidden" id="repid" value="0" />
+                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2015-04-14/88.html"><!-- 提交后返回地址 9为提交页面地址 -->
+                        <input type="submit" class="comment_submit" value="提交">
+                        <input name="nomember" type="checkbox" id="nomember" value="1" checked="checked">匿名发表
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>
+<div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="list_right">
+    <ul>
+        <li><a href=""><img src="http://cn.yetpress.com/skin/yetpress_cn/images/demo1.jpg" alt=""></a></li>
+    </ul>
+</div>
+                    <div class="clear"></div>
+                </div>
+             <div class="clear"></div>
+                <!-- <div class="inner_column">
+                    <div class="column" style="background:#8FDABA">
+                        
+                    </div>
+                    <div class="column col_middle" style="background:#E9D89C">
+                        
+                    </div>
+                    <div class="column" style="background:#B6D39A">
+                        
+                    </div>
+                    <div class="clear"></div>
+                  </div> -->
+                  
+                  
+            <!-- END CONTENT AREA -->
+            </div>
+        </div>
+        <div class="footer">
+      <div class="links">
+        站点站务：<a href="/contact">联系我们</a> | <a href="" target="_blank">商务合作</a> | <a href="">兼职合作</a> | <a href="">服务咨询</a> | <a href="/faq">常见问答</a> | <a href="/terms">网站声明</a> | <a href="">友链申请</a> | <a href="http://cn.yetpress.com/projects/" target="_blank">案例入口</a> 
+      </div>
+      <div class="friendlinks">
+        友情链接：<a href="http://poloniex.freshdesk.com" target="_blank">yetpress</a> | <a href="/faq">FAQ</a> | <a href="/terms">Terms and Conditions</a>
+      </div>
+      <div class="meta">
+        <div class="info">
+            <p>
+                Server time: <strong><span id='serverTime'>2016-06-12 12:28:29</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
+            </p>
+            <p>&copy; Yetpress, LLC 2014 - Powered by empireCms <script language="javascript" type="text/javascript" src="http://js.users.51.la/17693852.js"></script><noscript><a href="http://www.51.la/?17693852" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/17693852.asp" style="border:none" /></a></noscript></p>
+        </div>
+      </div>
+    </div>    
+</div>
+<div class="clear"></div>
+<div class="login user_wrap" style="display:none;">
+    <form method="post" name="form_login" action="http://cn.yetpress.com/e/member/doaction.php">
+        <input type="hidden" name="enews" value="login">
+        <input type="hidden" name="ecmsfrom" value="">
+        <input type="hidden" name="tempurl" value="">
+        <input type="hidden" name="tobind" id="tobind" value="0">
+        <div class="login-form">
+            <div class="form-group">
+              <input type="text" class="form-control login-field" name="username" placeholder="用户名" id="username">
+              <label class="login-field-icon fui-user" for="username"></label>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control login-field" name="password" placeholder="密码" id="password">
+              <label class="login-field-icon fui-lock" for="password"></label>
+            </div>
+            <a class="btn btn-success btn-lg btn-user s_login" href="javascript:void(0)" id="gologin">登陆</a>
+            <a class="btn btn-primary btn-lg btn-user s_reg" href="javascript:void(0)">注册</a>
+            <a class="btn btn-close" href="javascript:void(0)">关闭</a>
+        </div>
+    </form>
+</div>
+</div>
+<div class="clear"></div>
+<div class="reg user_wrap" style="display:none;">
+    <form method="post" name="form_reg" action="http://cn.yetpress.com/e/member/doaction.php">
+        <input type="hidden" name="enews" value="register">
+        <input type="hidden" name="groupid" value="1"><!-- 普通用户 -->
+        <input type="hidden" name="ecmsfrom" value="">
+        <input type="hidden" name="tempurl" value="">
+        <div class="login-form">
+            <div class="form-group">
+              <input type="text" class="form-control login-field" name="username" placeholder="用户名(必填)" id="username">
+              <label class="login-field-icon fui-user" for="username"></label>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control login-field" name="password" placeholder="密码(必填)" id="password">
+              <label class="login-field-icon fui-lock" for="password"></label>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control login-field" name="repassword" placeholder="重复密码(必填)" id="repassword">
+              <label class="login-field-icon fui-lock" for="repassword"></label>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control login-field" name="email" placeholder="邮箱(必填)" id="email">
+              <label class="login-field-icon fui-user" for="email"></label>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control login-field" name="qq" placeholder="QQ号码" id="qq">
+              <label class="login-field-icon fui-user" for="qq"></label>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control login-field" name="tel" placeholder="手机号码" id="tel">
+              <label class="login-field-icon fui-user" for="tel"></label>
+            </div>
+            <a class="btn btn-success btn-lg btn-user s_reg" href="javascript:void(0)" id="goreg">注册</a>
+            <a class="btn btn-primary btn-lg btn-user s_login" href="javascript:void(0)">登陆</a>
+            <a class="btn btn-close" href="javascript:void(0)">关闭</a>
+        </div>
+     </form>   
+</div>
+<script src="http://cn.yetpress.com/skin/yetpress_cn/js/totop.js"></script> <!-- 返回顶部 -->
+<script src="http://cn.yetpress.com/skin/yetpress_cn/js/jquery.blockUI.js"></script>
+<!-- http://malsup.com/jquery/block/#demos -->
+<script>
+    //当前页url
+    function loginReturnUrl(){
+        //多次提交错误返回后，acts参数会多次出现，每次要先过滤掉参数(结合项等的动态页可能自带有参数，因此要指定截取"acts"之前的内容)
+        var link=window.location.href;
+        var url="";
+        var acts=getUrlParam('acts');
+        if(acts){
+            url=link.substring(0, link.indexOf('acts'));
+        }else{
+            url=link;
+        }
+        return url+"?&acts=login";
+    }
+    function RegReturnUrl(){
+        var link=window.location.href;
+        var url="";
+        var acts=getUrlParam('acts');
+        if(acts){
+            url=link.substring(0, link.indexOf('acts'));
+        }else{
+            url=link;
+        }
+        return url+"?&acts=reg";
+    }
+    function getUrlParam(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r!=null) return unescape(r[2]); return null;
+    }
+    function getReturnUrl(){
+        var link=window.location.href;
+        var url="";
+        var acts=getUrlParam('acts');
+        if(acts){
+            url=link.substring(0, link.indexOf('acts'));
+        }else{
+            url=link;
+        }
+        return url;
+    }
+    $(function(){
+        $('.login input[name="ecmsfrom"]').val(getReturnUrl());
+        $('.reg input[name="ecmsfrom"]').val(getReturnUrl());
+        $('.login input[name="tempurl"]').val(loginReturnUrl());
+        $('.reg input[name="tempurl"]').val(RegReturnUrl());
+        var act=getUrlParam('acts');//登陆注册错误返回时触发的弹窗
+        if(act=="login"){
+            $(".user_login").click();
+        }else if(act=="reg"){
+            $(".user_reg").click();
+        }
+    })
+    var ui_width=$(window).width();
+    var f_w="50%";//宽度
+    var f_l="25%";//距左
+    var f_h="25";//居顶
+    if(ui_width<768){
+        f_w="88%";
+        f_l="6%";
+    }
+    $(".user_login").click(function(){
+        $.blockUI({
+            message: $(".login"),
+            css: {
+                background:"transparent",
+                border:"none",
+                background:"none",
+                width:f_w,
+                left:f_l,
+                top:"25%",
+                cursor:"default"
+            },
+            overlayCSS:{
+                cursor:"default",
+            }
+        });
+    })
+    $(".user_reg").click(function(){
+        var h=$(".reg").height();
+        var top=($(window).height()-h)/2;
+        // alert(h);
+        $.blockUI({
+            message: $(".reg"),
+            css: {
+                background:"transparent",
+                border:"none",
+                background:"none",
+                width:f_w,
+                left:f_l,
+                top:top,
+                cursor:"default"
+            },
+            overlayCSS:{
+                cursor:"default",
+            }
+        });
+    })
+    $(".btn-close").click(function(){
+        $.unblockUI({
+            message: $(".user_wrap"),
+        });
+    })
+    $('.login .s_reg').click(function(){
+        $.unblockUI({
+            message: $(".login"),
+            onUnblock: function(){$(".user_reg").click();}
+        });
+    })
+    $('.reg .s_login').click(function(){
+        $.unblockUI({
+            message: $(".reg"),
+            onUnblock: function(){  $(".user_login").click();}
+        });
+    })
+    $('#gologin').click(function() {
+        $('form[name="form_login"]').submit();
+    });
+    $('#goreg').click(function() {
+        var username=$('.reg #username').val();
+        var password=$('.reg #password').val();
+        var repassword=$('.reg #repassword').val();
+        var email=$('.reg #email').val();
+        var reg =/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+        
+        if(username==""){
+            alert("用户名必填");
+            $("#username").focus();
+            return false;
+        }else if(password==""){
+            alert("密码必填");
+            $("#password").focus();
+            return false;
+        }else if(repassword==""){
+            alert("重复密码必填");
+            $("#repassword").focus();
+            return false;
+        }else if(email==""){
+            alert("邮箱必填");
+            $("#email").focus();
+            return false;
+        }else if(!reg.test(email)){
+            alert("邮箱格式有误");
+            return false;
+        }else if(password!=repassword){
+            alert("两次密码输入不一致");
+            $("#password").focus();
+            return false;
+        }
+        $('form[name="form_reg"]').submit();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+#module303 {
+    border: none;
+}
+#module303 {
+    padding: 0px;
+}
+#module303 .formMiddle303 {
+    border: none;
+}
+#module303 .formMiddle303 {
+    padding: 0px;
+}
+#module303 .formBannerTitle303 {
+    border: none;
+}
+#module303 .formBannerTitle303 {
+    padding: 0px;
+}
+#module303 {
+    background: none;
+}
+#module303 .formMiddle303 {
+    background: none;
+}
+#module303 .g_background {
+    background: none;
+}
+#module303 .formMiddle303 .formMiddleCenter303 {
+    background: none;
+}
+#module303 .formMiddleContent303 {
+    background: none;
+}
+
+.open .navItem:nth-child(2) {
+    transition-delay: 160ms;
+}
+.open .navItem:nth-child(4) {
+    transition-delay: 240ms;
+}
+.open .navItem:nth-child(6) {
+    transition-delay: 320ms;
+}
+.open .navItem:nth-child(8) {
+    transition-delay: 400ms;
+}
+.open .navItem:nth-child(10) {
+    transition-delay: 480ms;
+}
+
+#module303 {
+    overflow: hidden;
+}

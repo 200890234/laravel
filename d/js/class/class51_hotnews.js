@@ -1,0 +1,1 @@
+document.write("<li><a href=\"http://m.yetpress.com/notice/2015-08-06/98.html\" title=\"yetpress手机站\">yetpress手机站</a></li>");

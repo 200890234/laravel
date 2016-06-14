@@ -1,0 +1,1 @@
+document.write("<li><a href=\"http://cn.yetpress.com/personal/2015-04-16/92.html\" title=\"个人简历表\">个人简历表</a></li>");

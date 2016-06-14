@@ -1,0 +1,53 @@
+/* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁 */
+html {overflow-y:scroll;}
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0}
+body,button,input,select,textarea{font:14px/1.7 '微软雅黑',tahoma,arial,\5b8b\4f53}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+ul,ol{list-style:none}
+li{float:left;}
+a{text-decoration:none}
+a:hover{text-decoration:underline}
+legend{color:#000}
+fieldset,img{border:0}
+button,input,select,textarea{font-size:100%}
+table{border-collapse:collapse;border-spacing:0}
+hr {border: none; height: 1px;}
+
+.clear{clear: both;}
+body{background:#8FDABA;}
+header.header{width: 100%;background: #075A5F;}
+nav.topnav{vertical-align: middle;font-size: 16px}
+ul.topul li{border-right:1px solid #06393b;border-bottom:1px solid #06393b;}
+ul.topul li:hover{background:#07494C;}
+ul.topul li a{color:#fff;display:block;padding: 8px 12px;}
+ul.topul li a:hover{text-decoration: none;}
+ul.subul{position:absolute;margin-left:-1px;margin-top:1px;display:none;}
+ul.subul li{border-left:1px solid #06393b;float: none;background: #075A5F;}
+
+section.main_left{float: left;}
+ul.leftul{margin-top:24px;float: right;margin-right:15px;}
+ul.leftul li{float: none;}
+ul.leftul li a{display:block;color:#fff;background:#1ABC9C;border-radius:5px;padding:0 24px;margin:6px 8px;}
+ul.leftul li a:hover{background:#0b7076;text-decoration:none;}
+section.main_right{float: left;background: #CCE8CF;min-height:450px;}
+.right_wrap{margin:26px 2% 26px 2%;}
+.col_note p{padding:1px 6px;line-height:20px;border-radius:5px;background:#1ABC9C;}
+.main_body{}
+ul.list_ul{margin-top:15px;margin-left:8px;}
+ul.list_ul li{float: none;line-height:26px;}
+ul.list_ul li a{color:#075C62;font-size:14px;}
+
+
+footer.footer{background:#031c1e;min-height:120px;border-top:3px solid #ffab06;}
+
+
+
+@media only screen and (min-width:768px){
+	.main_left{width:16%;}
+	.main_right{width:84%;}
+}
+@media only screen and (max-width:768px){
+	.main_left{width: 25%;}
+	.main_right{width: 75%;}
+	.header a{font-size:12px;padding:6px 8px;}
+}

@@ -1,0 +1,1 @@
+document.write("<li><a href=\"http://cn.yetpress.com/life/ideas/2015-03-11/45.html\" title=\"赛车场的诱惑\">赛车场的诱惑</a></li>");
