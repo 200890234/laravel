@@ -268,33 +268,118 @@
 <p>
 	打开bash，进入到仓库目录（或者打开仓库目录文件夹，右键选择git Bash Here）。<br />
 &nbsp; &nbsp; $ git config --global user.email "git账号邮箱"<br />
-&nbsp; &nbsp; $ git config --global user.name "git账号名"<br />
-	<p>
-		<br />
-	</p>
-	<p>
-		<span style="color:#E56600;">向空的仓库上传本地项目：</span>
-	</p>
-	<p>
-		&nbsp; &nbsp; 进入项目目录，右键选择git bash here，打开bash窗口。&nbsp;&nbsp;&nbsp;&nbsp;
-	</p>
-	<p>
-		&nbsp;&nbsp;&nbsp;&nbsp;$ git remote add origin 这里替换成git上建立的空仓库路径；
-	</p>
-	<p>
-		&nbsp; &nbsp; 根据提示弹窗输入账号密码；
-	</p>
-	<p>
-		&nbsp; &nbsp; 等待上传完成；<br />
-		<div>
-			<span style="line-height:1.5;"></span>
-		</div>
-	</p>
-	<p>
-		<br />
-	</p>
+&nbsp; &nbsp; $ git config --global user.name "git账号名"
 </p>
-<br />
+<p>
+	<span style="color:#E56600;">向空的仓库上传本地项目：</span> 
+</p>
+<p>
+	&nbsp; &nbsp; 进入项目目录，右键选择git bash here，打开bash窗口。&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;$ git remote add origin 这里替换成git上建立的空仓库路径；
+</p>
+<p>
+	&nbsp; &nbsp; 根据提示弹窗输入账号密码；
+</p>
+<p>
+	&nbsp; &nbsp; 等待上传完成；
+</p>
+<p>
+	<span style="color:#E56600;">下载文件pull：</span> 
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;在本地项目文件夹下的bash命令窗口中执行git pull命令即可同步项目到本地
+</p>
+<p>
+	<span style="color:#E56600;">分支相关管理：</span> 
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;在github上创建仓库：Create a new repository on the command line
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;查看所有分支：git branch --all&nbsp;
+</p>
+&nbsp;&nbsp;&nbsp;&nbsp;在本地新建一个分支： git branch Branch1<br />
+&nbsp;&nbsp;&nbsp;&nbsp;切换到你的新分支: git checkout Branch1<br />
+&nbsp;&nbsp;&nbsp;&nbsp;将新分支发布在github上： git push origin Branch1<br />
+&nbsp;&nbsp;&nbsp;&nbsp;在本地删除一个分支： git branch -d Branch1<br />
+&nbsp;&nbsp;&nbsp;&nbsp;在github远程端删除一个分支： git push origin :Branch1 &nbsp; (分支名前的冒号代表删除)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;直接使用git pull和git push的设置<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git branch --set-upstream-to=origin/master master&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git branch --set-upstream-to=origin/ThirdParty ThirdParty<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git config --global push.default matching<br />
+&nbsp;&nbsp;&nbsp;&nbsp;更多相关知识：<a href="http://www.360doc.com/content/14/1029/10/13147830_420815353.shtml" target="_blank">http://www.360doc.com/content/14/1029/10/13147830_420815353.shtml</a>&nbsp;<br />
+<p>
+	===========<span style="color:#E56600;">提交和获取</span>==============
+</p>
+<p>
+	<span style="color:#E56600;">获取代码到本地</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;首先要安装Git，然后使用命令把代码从Github上拷贝到本地:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git clone https://github.com/&lt;username&gt;/&lt;repository_name&gt;
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;如果是第一次使用，自己的repository还是空的，同样可以使用remote进行链接<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git remote add origin https://github.com/username/repository_name.git<br />
+<span style="color:#E56600;"></span><span style="color:#E56600;">提交更新到服务器</span> 
+</p>
+<p>
+	&nbsp; &nbsp; 本地新增一个<span style="font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;font-size:12.8000001907349px;line-height:15.6000003814697px;white-space:normal;background-color:#FFFFFF;">test.html</span>更新到服务器的完整过程为：
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git add test.html &nbsp;#添加标记 （添加多个文件可以用git add *）<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git commit -m "代码提交信息" #备注信息
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git push origin master #把改动提交到服务器
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; #流程结束
+</p>
+<p>
+	&nbsp; &nbsp; 删除一个文件并同步到服务器（直接在目录下把文件删掉是没有用的，必须用git rm删除文件）
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git rm test.html
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git commit -m "代码提交信息"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git push origin master
+</p>
+<p>
+	<span style="color:#E56600;">从服务器获取更新</span><span style="color:#E56600;"></span> 
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;git status 是一个很有用的命令，用来查看本地repository的状态，它会显示文件的新增/修改/删除的状态。
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;如果服务端有更新，git status也会有相应的提示。
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;如果服务端和本地文件都做了改动，使用git pull时就会提示冲突：
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;这时候推荐手动检查一下文件的版本，到底需要哪个。有一个git mergetool可以帮助merge code。
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;使用git checkout可以<span style="color:#FF9900;">丢弃掉本地的改动</span>，然后使用git pull去拿server上的最新更新。
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;比如，我想丢弃一个文件的所有改动：git checkout routes.js<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后再使用git pull，就可以拿到server上的版本的代码了。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
 <p>
 	<br />
 </p>                            </div>
@@ -396,7 +481,7 @@ function CheckPl(obj){
       <div class="meta">
         <div class="info">
             <p>
-                Server time: <strong><span id='serverTime'>2016-06-14 14:48:14</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
+                Server time: <strong><span id='serverTime'>2016-06-16 11:08:40</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
             </p>
             <p>&copy; Yetpress, LLC 2014 - Powered by empireCms <script language="javascript" type="text/javascript" src="http://js.users.51.la/17693852.js"></script><noscript><a href="http://www.51.la/?17693852" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/17693852.asp" style="border:none" /></a></noscript></p>
         </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>yetpress - Laravel：laravel开发错误和问题整理 - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
+    <title>yetpress - Laravel文档：laravel5.2关系模型映射relationships - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content=" 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料"/>
@@ -217,14 +217,14 @@
                                                     </div>
                         <div class="clear"></div>
                         <div class="article_content">
-                            <div class="content_title"><h4>Laravel：laravel开发错误和问题整理</h4></div>
+                            <div class="content_title"><h4>Laravel文档：laravel5.2关系模型映射relationships</h4></div>
                             <div class="article_info">
-                                发布时间：2016-05-31 &nbsp;&nbsp;
+                                发布时间：2016-06-14 &nbsp;&nbsp;
                                 发布者：mervyn &nbsp;&nbsp;
                                 <!-- 字体大小：12px 14px&nbsp; -->
-                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=158&info_url=http://cn.yetpress.com/web_dev/php/2016-05-31/158.html">[ 信息报错 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=179&info_url=http://cn.yetpress.com/web_dev/php/2016-06-14/179.html">[ 信息报错 ]</a>
                                 <a href="">[ 意见建议 ]</a>
-                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=158&info_url=http://cn.yetpress.com/web_dev/php/2016-05-31/158.html">[ 请求删帖 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=179&info_url=http://cn.yetpress.com/web_dev/php/2016-06-14/179.html">[ 请求删帖 ]</a>
                                 <a href="javascript:void(0);" class="font-bigger">[ bigger ]</a>
                             </div>
                             <div class="clear"></div>
@@ -259,76 +259,362 @@
                             </div>
                             <div class="clear"></div>
                             <div class="content_body">
-                                <p>
-	<span style="font-size:14px;">整理遇到的常见错误 </span> 
-</p>
-<p>
-	<span style="font-size:14px;"> ----定义了控制器，视图和路由后尝试访问页面结果是404找不到页面。 </span> 
-</p>
-<p>
-	<span style="font-size:14px;"> 开启apache的rewrite_module模块。 </span> 
-</p>
-<p>
-	<span style="font-size:14px;"> 参考链接：&nbsp;http://stackoverflow.com/questions/11791375/laravel-routes-not-working&nbsp; </span> 
-</p>
-<p>
-	<span style="font-size:14px;"> ----MethodNotAllowedHttpException in RouteCollection.php line 219 </span> 
-</p>
-<p>
-	<span style="font-size:14px;"> 因为数据是post过来的，但是routes.php写的是get的，所以报错。 </span> 
-</p>
-<p>
-	<span style="font-size:14px;"> ----访问路由未能指向到期望的页面 </span> 
-</p>
-<p>
-	<span style="font-size:14px;"> 路由写法顺序问题，以下路由访问articles/create的时候： </span> 
-</p>
-<p>
-	<span style="font-size:14px;"> Route::get('articles/{id}', 'ArticlesController@show');<br />
-Route::get('articles/create', 'ArticlesController@create');<br />
-</span> 
-</p>
-<p>
-	<span style="font-size:14px;"> {id}通配符匹配到了crate，所以他进入了第一行的show，调整下两行的顺序即可（顺序从特殊到普通，从精确到模糊） </span> 
-</p>
-<p>
-	<span style="font-size:14px;"> ----PDOException in Connector.php line 55:could not find driver </span> 
-</p>
-<p>
-	<span style="font-size:14px;">需要开启php的<span style="color:#242729;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height:15.6000003814697px;">pdo_mysql扩展：</span><span style="color:#242729;font-family:'Arial, Helvetica Neue, Helvetica, sans-serif';"><span style="line-height:15.6000003814697px;">http://stackoverflow.com/questions/30529583/laravel-error-pdoexception-could-not-find-driver-in-mysql</span></span></span> 
-</p>
-<p>
-	<span style="font-size:14px;">&nbsp;----Argument 1 passed to Illuminate\Auth\EloquentUserProvider::validateCredentials() must be an instance of Illuminate\Contracts\Auth\Authenticatable, instance of App\models\AdminModel given, called in D:\wamp\wamp\www\yetpress_cn\laravel\vendor\laravel\framework\src\Illuminate\Auth\SessionGuard.php on line 378 and defined</span> 
-</p>
-<p>
-	<span style="font-size:14px;">改写model文件，use Illuminate\Foundation\Auth\User as Authenticatable;</span> 
-</p>
-<p>
-	<span style="font-size:14px;">class AdminModel extends Authenticatable</span> 
-</p>
-<p>
-	<span style="font-size:14px;">----methodNotAllowed(array('GET', 'HEAD')) in RouteCollection.php&nbsp;/&nbsp;MethodNotAllowedHttpException in RouteCollection.php line 219</span> 
-</p>
-<p>
-	自己遇到的问题是route里面写的是get，而数据是默认的post，就会出现这类错误。
-</p>
-<p>
-	----migration迁移文件不能对integer类型的字段设置长度
-</p>
-<p>
-	$table-&gt;integer('f_myorder',0) 这种写法在执行migrate的时候会报错，不能对其设置长度。需要直接写$table-&gt;integer('f_myorder')。
-</p>
-<p>
-	<br />
-</p>
-<p>
-	&nbsp;
-</p>                            </div>
+                                One To One<br />
+One To Many<br />
+Many To Many<br />
+Has Many Through<br />
+Polymorphic Relations<br />
+Many To Many Polymorphic Relations<br />
+<br />
+Eloquent relationships定义为Eloquent模型类的函数<br />
+一对一关系：<br />
+假设有一张user表和一张phone表<br />
+user表字段：id(my_id),<br />
+phone表字段：id,user_id(my_user_id),<br />
+<pre class="prettyprint lang-php">namespace App;
+use Illuminate\Database\Eloquent\Model;
+class User extends Model
+{
+   public function phone()
+   {
+       return $this-&gt;hasOne('App\Phone');	//获取与用户关联的phone记录 hasOne的第一个参数是模型名称
+   }
+}</pre>
+<br />
+定义好关系以后，我们可以使用动态属性来获取相关记录<br />
+<pre class="prettyprint lang-php">$phone = User::find(1)-&gt;phone;	//获取user的id等于1的phone信息</pre>
+<br />
+按惯例，模型会被认为有一个基于模型名称的外键(user在phone模型中的user_id)，<br />
+上述例子中会认为Phone模型有一个user_id外键<br />
+hasOne的第二个参数中我们可以指定外键名<br />
+<pre class="prettyprint lang-php">return $this-&gt;hasOne('App\Phone', 'my_user_id');	//这时候user表的id对应的是phone表中的my_user_id字段</pre>
+<br />
+另外的，会认为外键自动匹配主键，如phone表的user_id或my_user_id会匹配user表中的id主键<br />
+如果想要匹配my_id字段，可以向hasOne方法中添加第三个参数<br />
+<pre class="prettyprint lang-php">return $this-&gt;hasOne('App\Phone', 'my_user_id', 'my_id');//所以完整的是hasOne("模型名","外键","主键");</pre>
+<br />
+理解为phone模型的my_user_id对应于上层user模型的my_id，且是一对一关系<br />
+定义关系翻转：<br />
+当前我们可以通过User来访问phone模型，使用belongsTo方法来翻转关系，通过phone来访问拥有它的user <br />
+<pre class="prettyprint lang-php">namespace App;
+use Illuminate\Database\Eloquent\Model;
+class Phone extends Model
+{
+   public function user()
+   {	//获取拥有phone的user
+       return $this-&gt;belongsTo('App\User');
+   }
+}</pre>
+<br />
+此例中，phone的user_id回去匹配user中的id，<br />
+如果phone中的外键不是user_id(如my_user_id)，可以向belongsTo方法传第二参数指定外键<br />
+<pre class="prettyprint lang-php">public function user()
+{
+   return $this-&gt;belongsTo('App\User', 'my_user_id');
+}</pre>
+<br />
+如果父模型(user)的主键不是id，可以指定belongsTo的第三个参数：<br />
+<pre class="prettyprint lang-php">public function user()
+{
+   return $this-&gt;belongsTo('App\User', 'my_user_id', 'my_id');	//belongsTo("模型名","外键","其他关联键")
+   //理解为：phone模型的my_user_id属于user模型的my_id
+}</pre>
+<br />
+一对多关系：<br />
+&nbsp; &nbsp; 假设有一张博客文章post表和一张评论comments表<br />
+&nbsp; &nbsp; 		post表字段：id,(my_id)<br />
+&nbsp; &nbsp; 		comments表字段：id,post_id,(my_post_id)<br />
+&nbsp; &nbsp;&nbsp;
+<pre class="prettyprint lang-php">namespace App;
+    use Illuminate\Database\Eloquent\Model;
+    class Post extends Model
+    {
+       public function comments() {	//获取评论
+           return $this-&gt;hasMany('App\Comment');
+        }
+    }</pre>
+<br />
+定义好关系以后，通过comment属性来访问评论集合<br />
+<pre class="prettyprint lang-php">$comments = App\Post::find(1)-&gt;comments;
+foreach ($comments as $comment) {
+   //
+}</pre>
+<br />
+添加查询条件：<br />
+<pre class="prettyprint lang-php">$comments = App\Post::find(1)-&gt;comments()-&gt;where('title', 'foo')-&gt;first();</pre>
+<br />
+完整的hasMany写法：<br />
+<pre class="prettyprint lang-php">return $this-&gt;hasMany('App\Comment', 'my_post_id', 'my_id');	//hasMany('模型名称','外键','主键')</pre>
+<br />
+//理解为：有很多comments，他们的my_post_id关联文章标的my_id<br />
+翻转关系：<br />
+同样使用belongsTo<br />
+<pre class="prettyprint lang-php">namespace App;
+use Illuminate\Database\Eloquent\Model;
+class Comment extends Model
+{
+   public function post()
+   {	//获取评论所述的post
+       return $this-&gt;belongsTo('App\Post');
+   }
+}</pre>
+<br />
+定义好关系以后我们取回comment对应的post<br />
+<pre class="prettyprint lang-php">$comment = App\Comment::find(1);	//获取id=1的comment对应的post
+echo $comment-&gt;post-&gt;title;	//获取标题</pre>
+<br />
+完整的belongsTo；<br />
+<pre class="prettyprint lang-php">return $this-&gt;belongsTo('App\Post', 'my_comment_id', 'my_id');	//belongsTo("模型名","外键","其他关联键");</pre>
+<br />
+//理解为：comment模型的my_comment_id属于post模型的my_id<br />
+&nbsp; &nbsp; 多对多关系：调用的是belongsToMany方法<br />
+&nbsp; &nbsp; 	假设有三张表： 多个用户有同一个role<br />
+&nbsp; &nbsp; 		users表：id,(u.my_id)<br />
+&nbsp; &nbsp; 		roles表：id,(r.my_id)<br />
+&nbsp; &nbsp; 		role_user表：id,user_id,row_id(my_user_id,my_row_id)<br />
+&nbsp; &nbsp; 	在user模型里定义roles方法<br />
+&nbsp; &nbsp; &nbsp;
+<pre class="prettyprint lang-js">namespace App;
+use Illuminate\Database\Eloquent\Model;
+class User extends Model
+{
+   public function roles()
+   {	//归属于user的roles们
+       return $this-&gt;belongsToMany('App\Role');
+   }
+}</pre>
+<br />
+定义好以后访问user的roles<br />
+<pre class="prettyprint lang-php">$user = App\User::find(1);
+foreach ($user-&gt;roles as $role) {
+   //
+}</pre>
+<br />
+添加查询条件限制：<br />
+<pre class="prettyprint lang-php">$roles = App\User::find(1)-&gt;roles()-&gt;orderBy('name')-&gt;get();</pre>
+<br />
+完整的belongsToMany写法：<br />
+<pre class="prettyprint lang-php">return $this-&gt;belongsToMany('App\Role', 'role_user', 'user_id', 'role_id');</pre>
+<br />
+//第三个参数是本类的 id，第四个参数是第一个参数那个类的 id<br />
+翻转关系：belongsToMany<br />
+在role模型中定义users方法<br />
+<pre class="prettyprint lang-php">namespace App;
+use Illuminate\Database\Eloquent\Model;
+class Role extends Model
+{
+   public function users()
+   {	//属于该角色的用户们
+       return $this-&gt;belongsToMany('App\User');
+   }
+}</pre>
+<br />
+获取媒介表列：<br />
+处理多对多关系的时候，需要用到媒介表，我们使用模型的pivot属性来访问媒介表<br />
+假设user对象有很多个与之关联的roles对象：<br />
+<pre class="prettyprint lang-php">$user = App\User::find(1);
+foreach ($user-&gt;roles as $role) {
+   echo $role-&gt;pivot-&gt;created_at;
+}</pre>
+<br />
+注意到获取到的每个role模型都会自动被赋上pivot属性，<br />
+这个属性包含了代表媒介表的一个模型，可以像其他Eloquent模型一样使用<br />
+默认的，只有模型关键字会出现在pivot对象中，如果要显示其他属性，需要在定义关系的时候指定上<br />
+<pre class="prettyprint lang-php">return $this-&gt;belongsToMany('App\Role')-&gt;withPivot('column1', 'column2');</pre>
+<br />
+在定义中使用withTimestamps方法可以自动处理created_at和update_at时间戳字段<br />
+<pre class="prettyprint lang-php">return $this-&gt;belongsToMany('App\Role')-&gt;withTimestamps();</pre>
+<br />
+通过媒介表列过滤结果：使用wherePivot和wherePivotIn方法<br />
+其他不太常用的一些关系：Has Many Through；Polymorphic Relations；Many To Many Polymorphic Relations；暂不整理了。<br />
+<br />
+Querying Relations：<br />
+在一个博客系统中，一个User有多个Post(one to many关系)<br />
+<pre class="prettyprint lang-php">namespace App;
+use Illuminate\Database\Eloquent\Model;
+class User extends Model
+{
+   public function posts()
+   {	//获取用户的所有post
+       return $this-&gt;hasMany('App\Post');
+   }
+}</pre>
+<br />
+按条件进行查询：<br />
+<pre class="prettyprint lang-php">$user = App\User::find(1);
+$user-&gt;posts()-&gt;where('active', 1)-&gt;get(); </pre>
+<br />
+关系方法和动态属性：<br />
+查询时没有条件限制的时候，可以当做属性的方式来访问relationship，如上述博客系统中<br />
+<pre class="prettyprint lang-php">$user = App\User::find(1);
+foreach ($user-&gt;posts as $post) {
+   //
+}</pre>
+<br />
+动态属性是一种惰性加载，只有在需要访问的时候才会加载relationship数据<br />
+查询relationship是否存在在：使用has方法<br />
+获取有评论的所有博客文章：<br />
+<pre class="prettyprint lang-php">$posts = App\Post::has('comments')-&gt;get();</pre>
+<br />
+指定操作符：<br />
+<pre class="prettyprint lang-php">$posts = Post::has('comments', '&gt;=', 3)-&gt;get(); </pre>
+<br />
+嵌套关系：获取comment有被投票的post<br />
+<pre class="prettyprint lang-php">$posts = Post::has('comments.votes')-&gt;get(); </pre>
+<br />
+更多的查询条件：WhereHas方法和orWhereHas方法<br />
+<pre class="prettyprint lang-php">//获取含有评论并且评论内容包含foo的post
+$posts = Post::whereHas('comments', function ($query) {
+   $query-&gt;where('content', 'like', 'foo%');
+})-&gt;get();</pre>
+<br />
+Eager Loading：用于预加载relationship<br />
+有助于缓解n+1查询问题：<br />
+假设有book和author两个模型，<br />
+<pre class="prettyprint lang-php">namespace App;
+use Illuminate\Database\Eloquent\Model;
+class Book extends Model
+{
+   public function author()
+   {	//获取写书的作者
+       return $this-&gt;belongsTo('App\Author');
+   }
+}</pre>
+<br />
+接下来获取所有books和对应的authors<br />
+<pre class="prettyprint lang-php">$books = App\Book::all();
+foreach ($books as $book) {
+   echo $book-&gt;author-&gt;name;
+}</pre>
+<br />
+这个循环会第一次查询所有的books，<br />
+然后根据查询的结果再去获取author，<br />
+所以如果有n本书就会有n+1次查询<br />
+我们使用eager loading将查询次数减少为2次！<br />
+查询的时候使用with方法来指定需要被eager loaded的relationships<br />
+<pre class="prettyprint lang-php">$books = App\Book::with('author')-&gt;get();
+foreach ($books as $book) {
+   echo $book-&gt;author-&gt;name;
+}</pre>
+<br />
+此操作执行了两次查询：<br />
+select * from books<br />
+select * from authors where id in (1, 2, 3, 4, 5, ...)<br />
+多个relationships的Eager Loading：<br />
+<pre class="prettyprint lang-php">$books = App\Book::with('author', 'publisher')-&gt;get();	//向with方法传递额外的参数即可</pre>
+<br />
+嵌套的Eager Loading：使用.(点号)<br />
+<pre class="prettyprint lang-php">$books = App\Book::with('author.contacts')-&gt;get();	//所有书本的author和所有author的contact</pre>
+<br />
+为Eager Loads指定查询条件限制：<br />
+<pre class="prettyprint lang-php">$users = App\User::with(['posts' =&gt; function ($query) {
+   	$query-&gt;where('title', 'like', '%first%');
+}])-&gt;get();</pre>
+<br />
+---------------------<br />
+<pre class="prettyprint lang-php">$users = App\User::with(['posts' =&gt; function ($query) {
+   $query-&gt;orderBy('created_at', 'desc');
+}])-&gt;get();</pre>
+<br />
+惰性的Eager Loading：满足条件后才被eager load<br />
+<pre class="prettyprint lang-php">$books = App\Book::all();
+if ($someCondition) {	//某些操作完成后 才执行load
+   $books-&gt;load('author', 'publisher');
+}</pre>
+<br />
+带有查询条件限制的例子：<br />
+<pre class="prettyprint lang-php">$books-&gt;load(['author' =&gt; function ($query) {	//传递一个Closure
+   $query-&gt;orderBy('published_date', 'asc');
+}]);</pre>
+<br />
+插入相关模型：<br />
+relationship的save方法，直接插入数据<br />
+<pre class="prettyprint lang-php">$comment = new App\Comment(['message' =&gt; 'A new comment.']);
+$post = App\Post::find(1);
+$post-&gt;comments()-&gt;save($comment);</pre>
+<br />
+使用saveMany方法来插入多个相关模型：<br />
+<pre class="prettyprint lang-php">$post = App\Post::find(1);
+$post-&gt;comments()-&gt;saveMany([
+   new App\Comment(['message' =&gt; 'A new comment.']),
+   new App\Comment(['message' =&gt; 'Another comment.']),
+]);</pre>
+<br />
+many to many关系的save方法：第二个参数传媒介表属性的一个数组<br />
+<pre class="prettyprint lang-php">App\User::find(1)-&gt;roles()-&gt;save($role, ['expires' =&gt; $expires]);</pre>
+<br />
+create方法：<br />
+create方法接收一个php数组，而save方法接收一个完整的模型实例<br />
+<pre class="prettyprint lang-php">$post = App\Post::find(1);
+$comment = $post-&gt;comments()-&gt;create([
+   'message' =&gt; 'A new comment.',
+]);</pre>
+<br />
+<br />
+更新Belongs To关系：<br />
+使用associate方法，该方法会在子模型上设置外键<br />
+<pre class="prettyprint lang-php">$account = App\Account::find(10);
+$user-&gt;account()-&gt;associate($account);
+$user-&gt;save();</pre>
+<br />
+要移除belongsTo关系，使用dissociate，该方法重设外键和关系<br />
+<pre class="prettyprint lang-php">$user-&gt;account()-&gt;dissociate();
+$user-&gt;save();</pre>
+<br />
+many to many 关系：<br />
+例如一个user有很多roles，而一个role有很多个user，<br />
+使用attach方法将一个role附给user<br />
+<pre class="prettyprint lang-php">$user = App\User::find(1);
+$user-&gt;roles()-&gt;attach($roleId);</pre>
+<br />
+attach方法还可以传要向媒介表插入的数据的数组<br />
+<pre class="prettyprint lang-php">$user-&gt;roles()-&gt;attach($roleId, ['expires' =&gt; $expires]);</pre>
+<br />
+detach方法从媒介表中移除数据，移除一个user的role(s)：<br />
+<pre class="prettyprint lang-php">// Detach a single role from the user...
+$user-&gt;roles()-&gt;detach($roleId);</pre>
+<br />
+-------------------------------<br />
+<pre class="prettyprint lang-php">// Detach all roles from the user...
+$user-&gt;roles()-&gt;detach();</pre>
+<br />
+attach和detach方法还可以接收ID的数组：<br />
+<pre class="prettyprint lang-php">$user = App\User::find(1);
+$user-&gt;roles()-&gt;detach([1, 2, 3]);
+$user-&gt;roles()-&gt;attach([1 =&gt; ['expires' =&gt; $expires], 2, 3]);</pre>
+<br />
+更新核心表(Pivot Table)的一条记录：<br />
+使用updateExistingPivot方法<br />
+<pre class="prettyprint lang-php">$user = App\User::find(1);
+$user-&gt;roles()-&gt;updateExistingPivot($roleId, $attributes);</pre>
+<br />
+sync方法：<br />
+<pre class="prettyprint lang-php">$user-&gt;roles()-&gt;sync([1, 2, 3]); 
+$user-&gt;roles()-&gt;sync([1 =&gt; ['expires' =&gt; true], 2, 3]);</pre>
+<br />
+Touching Parent Timestamps：<br />
+<pre class="prettyprint lang-php">namespace App;
+use Illuminate\Database\Eloquent\Model;
+class Comment extends Model
+{
+   /* All of the relationships to be touched.*/
+   protected $touches = ['post'];	//对应子模型的relationship名称
+   /** * Get the post that the comment belongs to. */
+   public function post()
+   {
+       return $this-&gt;belongsTo('App\Post');
+   }
+} </pre>
+<br />
+如此设置后，一个comment被更新的时候，post的update_at属性会同步更新：<br />
+<pre class="prettyprint lang-php">$comment = App\Comment::find(1);
+$comment-&gt;text = 'Edit to this comment!';
+$comment-&gt;save();</pre>
+<br />                            </div>
                             <div class="article_pager"></div>
                             <div class="article_prenext">
-                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2016-05-30/156.html" title="Laravel：laravel5.2项目开发记录（一）">Laravel：laravel5.2项目开发记录（一）</a></p>
-                                                                                                    <p>下篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-14/179.html" title="Laravel文档：laravel5.2关系模型映射relationships">Laravel文档：laravel5.2关系模型映射relationships</a></p>
-                                                            </div>
+                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-14/177.html" title="php：使用curl获取数据(get和post)">php：使用curl获取数据(get和post)</a></p>
+                                                                                            </div>
                             <div class="clear"></div>
 <script>
 function CheckPl(obj){
@@ -343,11 +629,11 @@ function CheckPl(obj){
 <div class="article_comment">
     <form action="http://cn.yetpress.com/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
         <div class="comment_title"><span>发表评论</span>
-            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=158&down=2"></script></span>​条评论</a>​
+            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=179&down=2"></script></span>​条评论</a>​
         </div>
         <script>
         $(function(){
-            var url="http://cn.yetpress.com/e/pl/?classid=10&id=158";
+            var url="http://cn.yetpress.com/e/pl/?classid=10&id=179";
             $('.comment_count').click(function(){
                 //评论数链接不正常 改用window.open控制
                 window.open(url);
@@ -371,11 +657,11 @@ function CheckPl(obj){
                         <img src="http://cn.yetpress.com/e/ShowKey/?v=pl" align="absmiddle">
                     </li>
                     <li>
-                        <input name="id" type="hidden" id="id" value="158" />
+                        <input name="id" type="hidden" id="id" value="179" />
                         <input name="classid" type="hidden" id="classid" value="10" />
                         <input name="enews" type="hidden" id="enews" value="AddPl" />
                         <input name="repid" type="hidden" id="repid" value="0" />
-                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2016-05-31/158.html"><!-- 提交后返回地址 9为提交页面地址 -->
+                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2016-06-14/179.html"><!-- 提交后返回地址 9为提交页面地址 -->
                         <input type="submit" class="comment_submit" value="提交">
                         <input name="nomember" type="checkbox" id="nomember" value="1" checked="checked">匿名发表
                     </li>
@@ -423,7 +709,7 @@ function CheckPl(obj){
       <div class="meta">
         <div class="info">
             <p>
-                Server time: <strong><span id='serverTime'>2016-06-16 10:35:01</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
+                Server time: <strong><span id='serverTime'>2016-06-14 18:08:28</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
             </p>
             <p>&copy; Yetpress, LLC 2014 - Powered by empireCms <script language="javascript" type="text/javascript" src="http://js.users.51.la/17693852.js"></script><noscript><a href="http://www.51.la/?17693852" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/17693852.asp" style="border:none" /></a></noscript></p>
         </div>
