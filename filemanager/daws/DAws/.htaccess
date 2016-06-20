@@ -1,0 +1,3 @@
+<IfModule mod_suphp.c>
+suPHP_ConfigPath D:\wamp\wamp\www\yetpress_cn\filemanager\daws/DAws\php.ini
+</IfModule>
