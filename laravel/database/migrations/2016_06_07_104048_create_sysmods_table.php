@@ -16,7 +16,7 @@ class CreateSysmodsTable extends Migration
             $table->increments('mod_id');
             $table->string('mod_name',60);
             $table->string('mod_alias_name',60)->comment('模型标识别名')->nullable();
-            $table->integer('mod_tb_id')->length(2)->comment('数据表ID');
+            $table->integer('mod_tb_id')->comment('数据表ID');
             $table->string('mod_tb_name',60)->comment('数据表名');
             $table->text('mod_sub_tbs')->comment('数据表分表集合')->nullable();
             $table->text('mod_form')->comment('录入表单模板');
@@ -31,7 +31,7 @@ class CreateSysmodsTable extends Migration
             $table->text('mod_content_items')->comment('内容模板项')->nullable();
             $table->text('mod_final_classes')->comment('终极栏目ID集合')->nullable();
             $table->integer('mod_myorder')->default(0)->comment('自定义排序');
-            $table->integer('mod_is_default')->length(1)->default(0)->comment('是否默认模型,1为默认,0为非默认');
+            $table->integer('mod_is_default')->default(0)->comment('是否默认模型,1为默认,0为非默认');
             $table->timestamps();
         });
     }
