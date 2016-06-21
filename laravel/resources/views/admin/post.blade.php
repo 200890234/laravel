@@ -1,4 +1,4 @@
-@include('inc.assets')
+@include('admin.inc.assets')
 <p>位置： 管理信息 > 网络编程 > html&js > 信息列表</p>
 				<div class="col_note">
 					<ul>

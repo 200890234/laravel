@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;//引入controller类 位于同级目录时 无需引入
 use App\Http\Requests;
 use Hash;//用于hash加密
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;   //使用validator
 use Auth;//使用Auth facade来认证
 //use Illuminate\Http\Request; //改用Request facade
 use Request;
 use Captcha;//使用验证码类
-use App\Models\AdminModel;//使用模型
+use App\Models\Admin\AdminModel;//使用模型
 
 class AdminController extends Controller
 {
@@ -20,7 +21,7 @@ class AdminController extends Controller
             exit;
         }
         $admin=AdminModel::getAdminInfo();
-        return view('admin_index',['adminInfo'=>$admin]);
+        return view('admin/admin_index',['adminInfo'=>$admin]);
 
     }
 
@@ -28,7 +29,7 @@ class AdminController extends Controller
         //captcha()/Captcha::create() 图片; captcha_src()/Captcha::src() url;captcha_img()/Captcha::img() img标签的html=>;
         //captcha_src("mini") //参数里传样式
         $captcha=captcha_src();
-        return view('admin_login',['captcha'=>$captcha]);//传数组参数 view中用$captcha获取
+        return view('admin/admin_login',['captcha'=>$captcha]);//传数组参数 view中用$captcha获取
         // return view('admin_login')->with('name', 'Victoria');//传单独数据参数
     }
     public function messages(){//重写默认的messages方法 用于自定义显示错误文字信息
@@ -43,7 +44,7 @@ class AdminController extends Controller
         // var_dump($_POST); //直接获取post的数据
         // echo Request::get('username'); //获取单个值的写法
         $input=Request::all();//使用request facade获取所有信息 格式为数组
-        // var_dump($input);exit;
+//         var_dump($input);exit;
         $validator = validator::make($input,[
                 "username"=>"required|",
                 "userpass"=>"required|",
@@ -67,29 +68,29 @@ class AdminController extends Controller
         }
     }
     public function left(){//管理左侧
-        return view("inc/menu");
+        return view("admin/inc/menu");
     }
     public function main(){//管理主界面
-        return view("main");
+        return view("admin/main");
     }
     public function setConf(){//
-        return view("setConf");
+        return view("admin/setConf");
     }
     public function setExtend(){//
-        return view("setExtend");
+        return view("admin/setExtend");
     }
     public function dataDict(){//
         $data=AdminModel::getDataDictList();
-        return view("dataDict",['lists'=>$data]);
+        return view("admin/dataDict",['lists'=>$data]);
     }
     public function devNote(){//
-        return view("devNote");
+        return view("admin/devNote");
     }
     public function sysModelAdd(){//
-        return view("sysModelAdd");
+        return view("admin/sysModelAdd");
     }
     public function sysModel(){//
-        return view("sysModel");
+        return view("admin/sysModel");
     }
     public function doPostTemp(){// 简单发布功能页面
         $message=[
@@ -116,11 +117,12 @@ class AdminController extends Controller
         }else{
             $msg="发布失败";
         }
-        echo $msg;
+//        echo $msg;
+        return Redirect::to('admin/dataDict')->with('msg',$msg);
     }
     public function updateTemp($tb,$id){// 简单列表页面
         $data=AdminModel::getDataDict($tb,$id);
-        return view('updateTemp',['tb'=>$tb,'id'=>$id,'list'=>$data]);
+        return view('admin/updateTemp',['tb'=>$tb,'id'=>$id,'list'=>$data]);
     }
     public function doUpdateTemp(){// update datadict
         $message=[
@@ -147,7 +149,9 @@ class AdminController extends Controller
         }else{
             $msg="修改失败";
         }
-        echo $msg;
+//        echo $msg;
+        //echo '<script>alert("'.$msg.'");</script>';
+        return Redirect::to('admin/dataDict')->with('msg',$msg);
     }
     public function deleteTemp($tb,$ids){// 简单列表页面
         //单个删除和批量删除 in(....)
@@ -158,6 +162,7 @@ class AdminController extends Controller
         }else{
             $msg="删除失败";
         }
-        echo $msg;
+//        echo $msg;
+        return Redirect::to('admin/dataDict')->with('msg',$msg);
     }
 }

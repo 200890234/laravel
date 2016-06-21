@@ -28,7 +28,7 @@
 
 	$arrName=$mtype."Arr";
 ?>
-@include('inc.assets')
+@include('admin.inc.assets')
 <ul class="leftul">
 <?php foreach ($$arrName as $key => $value) :?>
 	<li><a href="javascript:void(0);"><font>+</font>{{ $key }}</a>

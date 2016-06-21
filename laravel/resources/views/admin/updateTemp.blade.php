@@ -1,4 +1,4 @@
-@include('inc.assets')
+@include('admin.inc.assets')
 <?php 
         function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符串
             $str="";

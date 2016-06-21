@@ -1,4 +1,4 @@
-@include('inc.assets')
+@include('admin.inc.assets')
 <p>位置： 数据字典文章管理</p>
 				<div class="col_note">
 					<ul>
@@ -17,7 +17,10 @@
 				</div>
 				<div class="main_body">
 					<ul class="body_menutab">
-						<li>信息列表</li>
+						<li>信息列表</li>&nbsp;&nbsp;
+						@if(session('msg'))
+							<span class="error">提示信息：{{session("msg")}}</span>
+						@endif
 					</ul>
 					<div class="clear"></div>
 					<div class="tab_content">
@@ -28,7 +31,7 @@
 										<tr class="tr_th">
 											<th width="5%" align="center"><input type="checkbox" name="" class="c_box c_all" id="c_all_t"><label for="c_all_t"></label></th>
 											<th width="8%" align="center">ID</th>
-											<th width="50%">标题(共{{count($lists)}}/{!! $lists->count() !!}条)</th>
+											<th width="50%">标题(本页{{count($lists)}}条/共{!! $lists->total() !!}条)</th> <!--count($lists)={!! $lists->count() !!}}-->
 											<th width="20%">发布时间</th>
 											<th width="17%">操作</th>
 										</tr>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>laravel cms - admin index</title>
-    @include('inc.assets')
+    @include('admin.inc.assets')
 </head>
 <body id="top_body">
     <?php 
