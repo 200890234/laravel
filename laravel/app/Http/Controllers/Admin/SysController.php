@@ -10,4 +10,7 @@ use App\Http\Controllers\Controller;
 class SysController extends Controller
 {
     //
+    public function setConf(){//
+        return view("admin/set_conf");
+    }
 }

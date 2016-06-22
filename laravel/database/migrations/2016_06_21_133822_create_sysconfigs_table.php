@@ -90,7 +90,7 @@ class CreateSysconfigsTable extends Migration
             $table->integer('config_thumbnail_height')->default(150)->comment('图片缩略图默认高度');
             $table->integer('config_thumbnail_crop')->default(1)->comment('图片缩略图超出部分是否截取 1为截取，0不截取');
             $table->integer('config_attach_dirset')->default(0)->comment('附件存放目录方式 0为栏目目录，1为/d/file/p目录，2为/d/file目录');
-            $table->string('config_attach_datedir',30)->comment('附件存放日期目录')->nullable();
+            $table->string('config_attach_datedir',30)->default('Y-m-d')->comment('附件存放日期目录')->nullable();
             $table->timestamps();
         });
     }

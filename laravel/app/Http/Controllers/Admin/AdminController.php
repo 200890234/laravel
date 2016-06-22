@@ -73,9 +73,6 @@ class AdminController extends Controller
     public function main(){//管理主界面
         return view("admin/main");
     }
-    public function setConf(){//
-        return view("admin/setConf");
-    }
     public function setExtend(){//
         return view("admin/setExtend");
     }
