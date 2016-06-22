@@ -83,8 +83,8 @@ class CreateSysconfigsTable extends Migration
             $table->integer('config_email_smtplogincheck')->default(1)->comment('邮件SMTP是否需要登录验证  1为需要，0为不需要');
             $table->string('config_email_smtpusername',60)->comment('邮箱SMTP登录用户名')->nullable();
             $table->string('config_email_smtpuserpass',60)->comment('邮箱SMTP登录密码')->nullable();
-            $table->string('config_email_smtpport',60)->comment('邮箱SMTP登录密码')->nullable();
-            $table->string('config_email_stmpnickname',120)->comment('邮箱SMTP登录密码')->nullable();
+            $table->string('config_email_smtpport',60)->comment('邮箱SMTP端口')->nullable();
+            $table->string('config_email_stmpnickname',120)->comment('邮箱SMTP发信人呢称')->nullable();
             $table->string('config_pagenav_delimiter',20)->default('>')->comment('所在位置导航分隔字符');
             $table->integer('config_thumbnail_width')->default(260)->comment('图片缩略图默认宽度');
             $table->integer('config_thumbnail_height')->default(150)->comment('图片缩略图默认高度');

@@ -209,7 +209,62 @@
 											<tr>
 												<td class="post_r">附件存放日期目录：</td>
 												<td>
-													<input type="text" class="input300" name="attach_datedir" id="attach_datedir" value="">&nbsp; (如Y-m-d，Y/m-d，Y/m/d，Ymd等形式)
+													<input type="text" class="input300" name="attach_datedir" id="attach_datedir" value="">
+													&nbsp;
+													<select name="datedir" id="datedir">
+														<option value="Y-m-d">请选择</option>
+										                <option value="Y-m-d">2005-01-27</option>
+										                <option value="Y/m-d">2005/01-27</option>
+										                <option value="Y/m/d">2005/01/27</option>
+										                <option value="Ymd">20050127</option>
+													</select>(如Y-m-d，Y/m-d，Y/m/d，Ymd等形式)
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">后台上传附件大小：</td>
+												<td>
+													<input type="text" class="input300" name="allowed_filesize" id="allowed_filesize" value="">&nbsp;&nbsp;&nbsp;KB
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">后台上传文件扩展名：</td>
+												<td>
+													<input type="text" class="input300" name="allowed_filetype" id="allowed_filetype" value="">&nbsp;&nbsp;(多个请用“|”格开，如：.gif|.jpg)
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">前台投稿附件设置：</td>
+												<td>
+													<input type="checkbox" name="contribution_imgup" class="c_box" id="contribution_imgup">
+													<label for="contribution_imgup" style="top:4px;"></label>
+													开启上传图片,最大图片：<input type="text" class="input300" name="contribution_imgupsize" id="contribution_imgupsize" value="">&nbsp;KB
+													<div class="blank5"></div>
+													图片扩展名：<input type="text" class="input400" name="contribution_imguptype" id="contribution_imguptype" value="">&nbsp;(多个用"|"格开)
+													<div class="blank5"></div>
+													<input type="checkbox" name="contribution_imgup" class="c_box" id="contribution_fileup">
+													<label for="contribution_fileup" style="top:4px;"></label>
+													开启上传附件,最大附件：<input type="text" class="input300" name="contribution_fileupsize" id="contribution_fileupsize" value="">&nbsp;KB
+													<div class="blank5"></div>
+													附件扩展名：<input type="text" class="input400" name="contribution_fileuptype" id="contribution_fileuptype" value="">&nbsp;(多个用"|"格开)
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">数据备份存放目录：</td>
+												<td>
+													<input type="text" class="input300" name="bak_dir" id="bak_dir" value="">
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">压缩包存放目录：</td>
+												<td>
+													<input type="text" class="input300" name="bak_zipdir" id="bak_zipdir" value="">
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">支持MYSQL查询方式：</td>
+												<td>
+													<input type="checkbox" name="bak_mysql" class="c_box" id="bak_mysql">
+													<label for="bak_mysql" style="top:4px;"></label>&nbsp;支持
 												</td>
 											</tr>
 										</tbody>
@@ -218,22 +273,113 @@
 							</div>
 							<div class="tab_content">
 								<div class="wrap_post">
-									搜索设置
+									<table cellpadding="1" cellspacing="1" class="post_tb">
+										<tbody>
+											<tr>
+												<td class="post_r">搜索关键字长度限制：</td>
+												<td>
+													<input type="text" class="input40" name="search_minlength" id="search_minlength" value="">
+													~
+													<input type="text" class="input40" name="search_maxlength" id="search_maxlength" value="">
+													&nbsp;个字符之间
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">搜索时间间隔：</td>
+												<td>
+													<input type="text" class="input600" name="search_interval" id="search_interval" value="">
+													&nbsp;秒
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">页面显示：</td>
+												<td>
+													每页显示&nbsp;<input type="text" class="input40" name="search_perpage" id="search_perpage" value="">&nbsp;条记录，
+													<input type="text" class="input40" name="search_linksize" id="search_linksize" value="">&nbsp;个分页链接
+												</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 							<div class="tab_content">
 								<div class="wrap_post">
-									信息设置
+									<table cellpadding="1" cellspacing="1" class="post_tb">
+										<tbody>
+											<tr>
+												<td class="post_r">所在位置导航分隔字符：</td>
+												<td>
+													<input type="text" class="input400" name="pagenav_delimiter" id="pagenav_delimiter" value="">
+													&nbsp;秒
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">信息简介截取：</td>
+												<td>
+													<input type="text" class="input400" name="intro_length" id="intro_length" value="">
+													&nbsp;秒
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">相关链接依据：</td>
+												<td>
+													<select name="relate_rule" id="relate_rule">
+														<option value="0" selected="">标题包含关键字</option>
+														<option value="1">关键字相同</option>
+														<option value="2">标题包含与关键字相同</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">列表分页函数(下拉)：</td>
+												<td>
+													<input type="text" class="input400" name="config_listpager_dropdownfunc" id="config_listpager_dropdownfunc" value="">
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">列表分页函数(列表)：</td>
+												<td>
+													<input type="text" class="input300" name="config_listpager_listfunc" id="config_listpager_listfunc" value="">
+													每页显示&nbsp;<input type="text" class="input40" name="config_listpager_linksize" id="config_listpager_linksize" value="">&nbsp;个页码
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">内容分页函数：</td>
+												<td>
+													<input type="text" class="input400" name="config_article_pagerfunc" id="config_article_pagerfunc" value="">
+												</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 							<div class="tab_content">
 								<div class="wrap_post">
-									Email设置
+									<table cellpadding="1" cellspacing="1" class="post_tb">
+										<tbody>
+											<tr>
+												<td class="post_r">邮件发送模式：</td>
+												<td id="config_email_sendtype">
+													<input type="radio" name="config_email_sendtype" id="config_email_sendtype1" class="r_dio" value="0">
+													<label for="config_email_sendtype1"></label>&nbsp;mail 函数发送 &nbsp;&nbsp;
+													<input type="radio" name="config_email_sendtype" id="config_email_sendtype2" class="r_dio" value="1">
+													<label for="config_email_sendtype2"></label>&nbsp; SMTP 模块发送
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r" colspan="2">SMTP 模块发送设置：</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 							<div class="tab_content">
 								<div class="wrap_post">
-									图片设置
+									<table cellpadding="1" cellspacing="1" class="post_tb">
+										<tbody>
+											图片设置
+										</tbody>
+									</table>
 								</div>
 							</div>
 							<div class="post_action">
@@ -247,9 +393,13 @@
 				</div>
 <script>
 	$(function(){
-		$('#preset_ext').change(function() {
-			var ext=$(this).find("option:selected").val();
-			$('#index_extension').val(ext);
-		});
+		function sel_set(el,el_set){//设置select选择切换事件
+			el.change(function() {
+				var v=$(this).find("option:selected").val();
+				el_set.val(v);
+			});
+		}
+		sel_set($('#preset_ext'),$('#index_extension'));
+		sel_set($('#datedir'),$('#attach_datedir'));
 	})
 </script>				
