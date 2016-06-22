@@ -35,7 +35,7 @@ Route::group(['middleware' => ['web'],'namespace'=>'Admin'], function () {
 	Route::get('/admin/main','AdminController@main');
 
 	//菜单项
-	Route::get('/admin/setConf','SysController@setConf');//系统参数设置
+	Route::resource('/admin/setConf','SysController');//系统参数设置
 	Route::get('/admin/setExtend','SysController@setExtend');//系统扩展设置
 	Route::get('/admin/sysModel','AdminController@sysModel');//模型表管理
 		Route::get('/admin/sysModelAdd','AdminController@sysModelAdd');//新增模型表
@@ -54,17 +54,3 @@ Route::group(['middleware' => ['web'],'namespace'=>'Admin'], function () {
 });
 	Route::post('/xh/upload','XhUpload@doUpload');//这个放在group里csrf检测失败，把他拿出来不做csrf检测
 
-/*Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/home', 'HomeController@index');
-    Route::get('/tasks', 'TaskController@index');
-	Route::post('/task', 'TaskController@store');
-	Route::delete('/task/{task}', 'TaskController@destroy');
-});
-
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/home', 'HomeController@index');
-});*/

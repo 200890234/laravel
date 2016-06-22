@@ -40,10 +40,10 @@ class CreateSysconfigsTable extends Migration
             $table->integer('config_allow_contribution')->default(1)->comment('是否开启投稿功能,1为开启，0为关闭');
             $table->integer('config_contribution_imgup')->default(1)->comment('前台投稿是否开启上传图片 1为开启，0为关闭');
             $table->integer('config_contribution_imgupsize')->default(2048)->comment('前台投稿上传最大图片大小KB');
-            $table->string('config_contribution_imguptype','255')->default(2048)->comment('前台投稿上传图片扩展名限制');
+            $table->string('config_contribution_imguptype','255')->default('.gif|.jpg|.png')->comment('前台投稿上传图片扩展名限制');
             $table->integer('config_contribution_fileup')->default(1)->comment('前台投稿是否开启上传附件 1为开启，0为关闭');
             $table->integer('config_contribution_fileupsize')->default(20480)->comment('前台投稿最大附件大小');
-            $table->string('config_contribution_fileuptype','255')->default(2048)->comment('前台投稿上传附件扩展名限制');
+            $table->string('config_contribution_fileuptype','255')->default('.zip|.rar')->comment('前台投稿上传附件扩展名限制');
             $table->integer('config_allow_register')->default(1)->comment('是否开启会员注册,1为开启，0为关闭');
             $table->integer('config_login_timeout')->default(120)->comment('登录超时限制时间分钟');
             $table->integer('config_intro_length')->default(120)->comment('信息简介截取字数');

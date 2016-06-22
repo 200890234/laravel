@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>yetpress - Laravel：路由知识点 - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
+    <title>yetpress - Laravel：更新单条记录多个字段的快捷方法 - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content=" 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料"/>
@@ -218,14 +218,14 @@
                                                     </div>
                         <div class="clear"></div>
                         <div class="article_content">
-                            <div class="content_title"><h4>Laravel：路由知识点</h4></div>
+                            <div class="content_title"><h4>Laravel：更新单条记录多个字段的快捷方法</h4></div>
                             <div class="article_info">
-                                发布时间：2016-06-12 &nbsp;&nbsp;
+                                发布时间：2016-06-22 &nbsp;&nbsp;
                                 发布者：mervyn &nbsp;&nbsp;
                                 <!-- 字体大小：12px 14px&nbsp; -->
-                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=171&info_url=http://cn.yetpress.com/web_dev/php/2016-06-12/171.html">[ 信息报错 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=188&info_url=http://cn.yetpress.com/web_dev/php/2016-06-22/188.html">[ 信息报错 ]</a>
                                 <a href="">[ 意见建议 ]</a>
-                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=171&info_url=http://cn.yetpress.com/web_dev/php/2016-06-12/171.html">[ 请求删帖 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=188&info_url=http://cn.yetpress.com/web_dev/php/2016-06-22/188.html">[ 请求删帖 ]</a>
                                 <a href="javascript:void(0);" class="font-bigger">[ bigger ]</a>
                             </div>
                             <div class="clear"></div>
@@ -261,25 +261,83 @@
                             <div class="clear"></div>
                             <div class="content_body">
                                 <p>
-	为路由分组，添加前缀和命名空间，以及创建资源路由(resource)：
-</p>
-<p style="text-align:center;">
-	<a href="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/9a1d0211313c7e63f69aedd199aa2ff7.png" target="_blank"><img src="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/9a1d0211313c7e63f69aedd199aa2ff7.png" border="0" alt="" /></a> 
+	文章来源：http://www.ekan001.com/articles/44
 </p>
 <p>
 	<br />
 </p>
 <p>
-	创建资源控制器的命令为：php artisan make:controller ArticleController --resource.
+	<br />
 </p>
-<p>
-	Route::resource('article','ArticleController'<span style="line-height:1.5;">);会直接生成以下控制器方法，</span> 
+<blockquote style="box-sizing:border-box;padding:10px 20px;margin:0px 0px 20px;font-size:17.5px;border-left-width:5px;border-left-style:solid;border-left-color:#EEEEEE;color:#555555;font-family:tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;line-height:28px;white-space:normal;background-color:#F9F9F5;">
+	<p style="box-sizing:border-box;margin-top:0px;margin-bottom:0px;">
+		手册里只提到了 Model::create() 方法可以从表单中填充数据到模型字段，但是对于update操作并没有说明，其实是有一个方法可以用的。
+	</p>
+</blockquote>
+<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#555555;font-family:tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;font-size:17px;line-height:28px;white-space:normal;background-color:#F9F9F5;">
+	常见的更新数据流程为：
 </p>
-<p>
-	<span style="line-height:1.5;">index,store,create,destroy和update方法在控制器里直接使用。</span> 
+<ol style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#555555;font-family:tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;font-size:17px;line-height:28px;white-space:normal;background-color:#F9F9F5;">
+	<li style="box-sizing:border-box;">
+		填写表单。
+	</li>
+	<li style="box-sizing:border-box;">
+		根据表单中id字段查询，得到模型。
+	</li>
+	<li style="box-sizing:border-box;">
+		验证表单validator。
+	</li>
+	<li style="box-sizing:border-box;">
+		根据表单修改模型对应字段值，然后保存save。
+	</li>
+</ol>
+<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#555555;font-family:tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;font-size:17px;line-height:28px;white-space:normal;background-color:#F9F9F5;">
+	第三步先略过，简单说明下 1、2、4步：
 </p>
-<p style="text-align:center;">
-	<a href="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/c1710420d68e05b67841421535287978.png" target="_blank"><img src="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/c1710420d68e05b67841421535287978.png" border="0" alt="" /></a> 
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$id</span> = Request::input(<span class="hljs-string" style="box-sizing:border-box;color:#880000;">'id'</span>);&nbsp;</code>
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$user</span> = User::find(<span class="hljs-variable" style="box-sizing:border-box;">$id</span>);&nbsp;</code>
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$user</span>-&gt;name = <span class="hljs-string" style="box-sizing:border-box;color:#880000;">"xxx"</span>;&nbsp;</code>
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$user</span>-&gt;age = <span class="hljs-number" style="box-sizing:border-box;color:#008800;">10</span>;&nbsp;</code>
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$user</span>-&gt;sex = <span class="hljs-string" style="box-sizing:border-box;color:#880000;">"男"</span>;&nbsp;</code>
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-comment" style="box-sizing:border-box;color:#888888;">//...</span>&nbsp;</code>
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$user</span>-&gt;save(); </code>
+</p>
+<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#555555;font-family:tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;font-size:17px;line-height:28px;white-space:normal;background-color:#F9F9F5;">
+	可以看到，填充数据非常麻烦，要一个字段一个字段的写出来，如果表单字段很多，很容易出错。
+</p>
+<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#555555;font-family:tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;font-size:17px;line-height:28px;white-space:normal;background-color:#F9F9F5;">
+	而我们知道，在创建模型的时候有一个<code class="hljs sql" style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:15px;padding:0.5em;color:black;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;display:block;overflow-x:auto;background:#F0F0F0;"><span class="hljs-operator" style="box-sizing:border-box;"><span class="hljs-keyword" style="box-sizing:border-box;font-weight:bold;">create</span></span></code>方法可以直接填充表单数据，通过分析 create 方法可知，它其实在内部调用了<code class="hljs" style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:15px;padding:0.5em;color:black;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;display:block;overflow-x:auto;background:#F0F0F0;">fill</code>方法来填充属性，而这个方法是<code class="hljs php" style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:15px;padding:0.5em;color:black;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;display:block;overflow-x:auto;background:#F0F0F0;"><span class="hljs-keyword" style="box-sizing:border-box;font-weight:bold;">public</span></code>的，所以我们可以直接应用到 update 操作中。
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$id</span> = Request::input(<span class="hljs-string" style="box-sizing:border-box;color:#880000;">'id'</span>);&nbsp;</code>
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$data</span> = Request::input(<span class="hljs-string" style="box-sizing:border-box;color:#880000;">'data'</span>);&nbsp;</code>
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$user</span> = User::find(<span class="hljs-variable" style="box-sizing:border-box;">$id</span>);&nbsp;</code>
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$user</span>-&gt;fill(<span class="hljs-variable" style="box-sizing:border-box;">$data</span>);&nbsp;</code>
+</p>
+<p style="box-sizing:border-box;overflow:auto;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:13px;padding:0.5em;margin-top:0px;margin-bottom:10px;line-height:1.42857143;word-break:break-all;word-wrap:break-word;border:1px solid #CCCCCC;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#F0F0F0;">
+	<code style="box-sizing:border-box;font-family:Menlo, Monaco, Consolas, 'Courier New', monospace;font-size:inherit;padding:0px;color:inherit;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;white-space:pre-wrap;background-color:transparent;"><span class="hljs-variable" style="box-sizing:border-box;">$user</span>-&gt;save(); </code>
+</p>
+<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#555555;font-family:tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;font-size:17px;line-height:28px;white-space:normal;background-color:#F9F9F5;">
+	就是这么简单。
 </p>
 <p>
 	<br />
@@ -289,9 +347,8 @@
 </p>                            </div>
                             <div class="article_pager"></div>
                             <div class="article_prenext">
-                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-07/170.html" title="微信开发：授权、获取用户信息以及和本地数据库交互的实例">微信开发：授权、获取用户信息以及和本地数据库交互的实例</a></p>
-                                                                                                    <p>下篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-22/187.html" title="Laravel：创建和使用自定义函数">Laravel：创建和使用自定义函数</a></p>
-                                                            </div>
+                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-22/187.html" title="Laravel：创建和使用自定义函数">Laravel：创建和使用自定义函数</a></p>
+                                                                                            </div>
                             <div class="clear"></div>
 <script>
 function CheckPl(obj){
@@ -306,11 +363,11 @@ function CheckPl(obj){
 <div class="article_comment">
     <form action="http://cn.yetpress.com/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
         <div class="comment_title"><span>发表评论</span>
-            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=171&down=2"></script></span>​条评论</a>​
+            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=188&down=2"></script></span>​条评论</a>​
         </div>
         <script>
         $(function(){
-            var url="http://cn.yetpress.com/e/pl/?classid=10&id=171";
+            var url="http://cn.yetpress.com/e/pl/?classid=10&id=188";
             $('.comment_count').click(function(){
                 //评论数链接不正常 改用window.open控制
                 window.open(url);
@@ -334,11 +391,11 @@ function CheckPl(obj){
                         <img src="http://cn.yetpress.com/e/ShowKey/?v=pl" align="absmiddle">
                     </li>
                     <li>
-                        <input name="id" type="hidden" id="id" value="171" />
+                        <input name="id" type="hidden" id="id" value="188" />
                         <input name="classid" type="hidden" id="classid" value="10" />
                         <input name="enews" type="hidden" id="enews" value="AddPl" />
                         <input name="repid" type="hidden" id="repid" value="0" />
-                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2016-06-12/171.html"><!-- 提交后返回地址 9为提交页面地址 -->
+                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2016-06-22/188.html"><!-- 提交后返回地址 9为提交页面地址 -->
                         <input type="submit" class="comment_submit" value="提交">
                         <input name="nomember" type="checkbox" id="nomember" value="1" checked="checked">匿名发表
                     </li>
@@ -386,7 +443,7 @@ function CheckPl(obj){
       <div class="meta">
         <div class="info">
             <p>
-                Server time: <strong><span id='serverTime'>2016-06-22 18:31:16</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
+                Server time: <strong><span id='serverTime'>2016-06-22 18:56:57</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
             </p>
             <p>&copy; Yetpress, LLC 2014 - Powered by empireCms <script language="javascript" type="text/javascript" src="http://js.users.51.la/17693852.js"></script><noscript><a href="http://www.51.la/?17693852" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/17693852.asp" style="border:none" /></a></noscript></p>
         </div>

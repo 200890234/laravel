@@ -16,10 +16,12 @@ class AdminController extends Controller
 {
     public function index()
     {
+        /*
+        //写到VerifyAdmin中间件里了
         if (!Auth::check()) {
             return redirect('admin/login');
             exit;
-        }
+        }*/
         $admin=AdminModel::getAdminInfo();
         return view('admin/admin_index',['adminInfo'=>$admin]);
 
