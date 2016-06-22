@@ -91,7 +91,8 @@ table.list_tb td{color:#075A5F;}
 .c_box + label{
 	/*background-color: #fafafa;*/
 	/*background-color: #fafafa;*/
-	background-color: #ECECEC;
+	/*background-color: #ECECEC;*/
+	background-color: #C7DFD1;
 	border: 1px solid #cacece;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
 	padding: 9px;
@@ -161,6 +162,8 @@ table.post_tb td{height:30px;padding:4px 0;font-size:14px;}
 table.post_tb td .input600{width:600px;padding-left:6px;}
 table.post_tb td .input400{width:400px;padding-left:6px;}
 table.post_tb td .input300{width:300px;padding-left:6px;}
+table.post_tb td .input120{width:120px;padding-left:6px;}
+table.post_tb td .input80{width:80px;padding-left:6px;}
 table.post_tb td .input40{width:40px;padding-left:6px;}
 table.post_tb td select{padding:0 6px;background:#C7DFD1;border:none;height:28px;}
 .post_action{margin-top:15px;margin-left:100px;}

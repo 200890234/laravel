@@ -189,6 +189,7 @@
 											</tr>
 										</tbody>
 									</table>
+									<div class="blank10"></div>
 								</div>
 							</div>
 							<div class="tab_content">
@@ -197,13 +198,13 @@
 										<tbody>
 											<tr>
 												<td class="post_r">附件存放目录：</td>
-												<td>
-													<input type="radio" name="usercaptcha_enabled" id="usercaptcha_enabled1" class="r_dio" value="0">
-													<label for="usercaptcha_enabled1"></label>&nbsp;栏目目录&nbsp;&nbsp;
-													<input type="radio" name="usercaptcha_enabled" id="usercaptcha_enabled2" class="r_dio" value="1">
-													<label for="usercaptcha_enabled2"></label>&nbsp;/d/file/p目录 
-													<input type="radio" name="usercaptcha_enabled" id="usercaptcha_enabled3" class="r_dio" value="2">
-													<label for="usercaptcha_enabled3"></label>&nbsp;/d/file目录 
+												<td id="attach_dirset">
+													<input type="radio" name="attach_dirset" id="attach_dirset1" class="r_dio" value="0">
+													<label for="attach_dirset1"></label>&nbsp;栏目目录&nbsp;&nbsp;
+													<input type="radio" name="attach_dirset" id="attach_dirset2" class="r_dio" value="1">
+													<label for="attach_dirset2"></label>&nbsp;/d/file/p目录&nbsp;
+													<input type="radio" name="attach_dirset" id="attach_dirset3" class="r_dio" value="2">
+													<label for="attach_dirset3"></label>&nbsp;/d/file目录&nbsp;
 												</td>
 											</tr>
 											<tr>
@@ -235,13 +236,13 @@
 											<tr>
 												<td class="post_r">前台投稿附件设置：</td>
 												<td>
-													<input type="checkbox" name="contribution_imgup" class="c_box" id="contribution_imgup">
+													<input type="checkbox" name="contribution_imgup" class="c_box" id="contribution_imgup" value="">
 													<label for="contribution_imgup" style="top:4px;"></label>
 													开启上传图片,最大图片：<input type="text" class="input300" name="contribution_imgupsize" id="contribution_imgupsize" value="">&nbsp;KB
 													<div class="blank5"></div>
 													图片扩展名：<input type="text" class="input400" name="contribution_imguptype" id="contribution_imguptype" value="">&nbsp;(多个用"|"格开)
 													<div class="blank5"></div>
-													<input type="checkbox" name="contribution_imgup" class="c_box" id="contribution_fileup">
+													<input type="checkbox" name="contribution_imgup" class="c_box" id="contribution_fileup" value="">
 													<label for="contribution_fileup" style="top:4px;"></label>
 													开启上传附件,最大附件：<input type="text" class="input300" name="contribution_fileupsize" id="contribution_fileupsize" value="">&nbsp;KB
 													<div class="blank5"></div>
@@ -263,12 +264,13 @@
 											<tr>
 												<td class="post_r">支持MYSQL查询方式：</td>
 												<td>
-													<input type="checkbox" name="bak_mysql" class="c_box" id="bak_mysql">
+													<input type="checkbox" name="bak_mysql" class="c_box" id="bak_mysql" value="">
 													<label for="bak_mysql" style="top:4px;"></label>&nbsp;支持
 												</td>
 											</tr>
 										</tbody>
 									</table>
+									<div class="blank10"></div>
 								</div>
 							</div>
 							<div class="tab_content">
@@ -287,7 +289,7 @@
 											<tr>
 												<td class="post_r">搜索时间间隔：</td>
 												<td>
-													<input type="text" class="input600" name="search_interval" id="search_interval" value="">
+													<input type="text" class="input400" name="search_interval" id="search_interval" value="">
 													&nbsp;秒
 												</td>
 											</tr>
@@ -300,6 +302,7 @@
 											</tr>
 										</tbody>
 									</table>
+									<div class="blank10"></div>
 								</div>
 							</div>
 							<div class="tab_content">
@@ -333,24 +336,25 @@
 											<tr>
 												<td class="post_r">列表分页函数(下拉)：</td>
 												<td>
-													<input type="text" class="input400" name="config_listpager_dropdownfunc" id="config_listpager_dropdownfunc" value="">
+													<input type="text" class="input400" name="listpager_dropdownfunc" id="listpager_dropdownfunc" value="">
 												</td>
 											</tr>
 											<tr>
 												<td class="post_r">列表分页函数(列表)：</td>
 												<td>
-													<input type="text" class="input300" name="config_listpager_listfunc" id="config_listpager_listfunc" value="">
-													每页显示&nbsp;<input type="text" class="input40" name="config_listpager_linksize" id="config_listpager_linksize" value="">&nbsp;个页码
+													<input type="text" class="input300" name="listpager_listfunc" id="listpager_listfunc" value="">
+													每页显示<input type="text" class="input40" name="listpager_linksize" id="listpager_linksize" value="">&nbsp;个页码
 												</td>
 											</tr>
 											<tr>
 												<td class="post_r">内容分页函数：</td>
 												<td>
-													<input type="text" class="input400" name="config_article_pagerfunc" id="config_article_pagerfunc" value="">
+													<input type="text" class="input400" name="article_pagerfunc" id="article_pagerfunc" value="">
 												</td>
 											</tr>
 										</tbody>
 									</table>
+									<div class="blank10"></div>
 								</div>
 							</div>
 							<div class="tab_content">
@@ -359,27 +363,149 @@
 										<tbody>
 											<tr>
 												<td class="post_r">邮件发送模式：</td>
-												<td id="config_email_sendtype">
-													<input type="radio" name="config_email_sendtype" id="config_email_sendtype1" class="r_dio" value="0">
-													<label for="config_email_sendtype1"></label>&nbsp;mail 函数发送 &nbsp;&nbsp;
-													<input type="radio" name="config_email_sendtype" id="config_email_sendtype2" class="r_dio" value="1">
-													<label for="config_email_sendtype2"></label>&nbsp; SMTP 模块发送
+												<td id="email_sendtype">
+													<input type="radio" name="email_sendtype" id="email_sendtype1" class="r_dio" value="0">
+													<label for="email_sendtype1"></label>&nbsp;mail 函数发送 &nbsp;&nbsp;
+													<input type="radio" name="email_sendtype" id="email_sendtype2" class="r_dio" value="1">
+													<label for="email_sendtype2"></label>&nbsp; SMTP 模块发送
 												</td>
 											</tr>
 											<tr>
-												<td class="post_r" colspan="2">SMTP 模块发送设置：</td>
+												<td class="post_r"><b>SMTP 模块发送设置：</b></td>
+												<td class="post_r"></td>
+											</tr>
+											<tr>
+												<td class="post_r">SMTP服务器：</td>
+												<td><input type="text" class="input400" name="email_smtphost" id="email_smtphost" value=""></td>
+											</tr>
+											<tr>
+												<td class="post_r">SMTP端口：</td>
+												<td><input type="text" class="input400" name="email_smtpport" id="email_smtpport" value=""></td>
+											</tr>
+											<tr>
+												<td class="post_r">邮箱SMTP发信人呢称：</td>
+												<td><input type="text" class="input400" name="email_stmpnickname" id="email_stmpnickname" value=""></td>
+											</tr>
+											<tr>
+												<td class="post_r">是否需要登录验证：</td>
+												<td id="email_smtplogincheck">
+													<input type="radio" name="email_smtplogincheck" id="email_smtplogincheck1" class="r_dio" value="0">
+													<label for="email_smtplogincheck1"></label>&nbsp;否 &nbsp;&nbsp;
+													<input type="radio" name="email_smtplogincheck" id="email_smtplogincheck2" class="r_dio" value="1">
+													<label for="email_smtplogincheck2"></label>&nbsp;是
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">邮箱登录用户名：</td>
+												<td><input type="text" class="input400" name="email_smtpusername" id="email_smtpusername" value=""></td>
+											</tr>
+											<tr>
+												<td class="post_r">邮箱登录密码：</td>
+												<td><input type="password" class="input400" name="email_smtpuserpass" id="email_smtpuserpass" value=""></td>
 											</tr>
 										</tbody>
 									</table>
+									<div class="blank10"></div>
 								</div>
 							</div>
 							<div class="tab_content">
 								<div class="wrap_post">
 									<table cellpadding="1" cellspacing="1" class="post_tb">
 										<tbody>
-											图片设置
+											<tr>
+												<td class="post_r"><b>图片缩略图设置：</b></td>
+												<td class="post_r"></td>
+											</tr>
+											<tr>
+												<td class="post_r">默认值：</td>
+												<td> 
+													宽：&nbsp;<input type="text" class="input40" name="thumbnail_width" id="thumbnail_width" value="">&nbsp;×高: <input type="text" class="input40" name="thumbnail_height" id="thumbnail_height" value="">
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">超出部分是否截取：</td>
+												<td id="thumbnail_crop">
+													<input type="radio" name="thumbnail_crop" id="thumbnail_crop1" class="r_dio" value="0">
+													<label for="thumbnail_crop1"></label>&nbsp;否 &nbsp;&nbsp;
+													<input type="radio" name="thumbnail_crop" id="thumbnail_crop2" class="r_dio" value="1">
+													<label for="thumbnail_crop2"></label>&nbsp;是
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r"><b>图片水印设置：</b></td>
+												<td class="post_r"></td>
+											</tr>
+											<tr>
+												<td class="post_r">水印位置：</td>
+												<td> 
+													<table width="400" border="0" cellpadding="6" cellspacing="1">
+											            <tbody>
+															<tr id="watermark_position">
+																<td rowspan="3">
+																	<div align="center">
+																		<input type="radio" name="watermark_position" id="watermark_position1" class="r_dio" value="0"><label for="watermark_position1"></label>
+																		<br>
+																		随机 
+																	</div>
+																</td>
+																<td>
+																	<div align="center"><input type="radio" name="watermark_position" id="watermark_position2" class="r_dio" value="1"><label for="watermark_position2"></label></div>
+																</td>
+																<td>
+																	<div align="center"><input type="radio" name="watermark_position" id="watermark_position3" class="r_dio" value="2"><label for="watermark_position3"></label></div>
+																</td>
+																<td>
+																	<div align="center"><input type="radio" name="watermark_position" id="watermark_position4" class="r_dio" value="3"><label for="watermark_position4"></label></div>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div align="center"><input type="radio" name="watermark_position" id="watermark_position5" class="r_dio" value="4"><label for="watermark_position5"></label></div>
+																</td>
+																<td>
+																	<div align="center"><input type="radio" name="watermark_position" id="watermark_position6" class="r_dio" value="5"><label for="watermark_position6"></label></div>
+																</td>
+																<td>
+																	<div align="center"><input type="radio" name="watermark_position" id="watermark_position7" class="r_dio" value="6"><label for="watermark_position7"></label></div>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div align="center"><input type="radio" name="watermark_position" id="watermark_position8" class="r_dio" value="7"><label for="watermark_position8"></label></div>
+																</td>
+																<td>
+																	<div align="center"><input type="radio" name="watermark_position" id="watermark_position9" class="r_dio" value="8"><label for="watermark_position9"></label></div>
+																</td>
+																<td>
+																	<div align="center"><input type="radio" name="watermark_position" id="watermark_position10" class="r_dio" value="9" checked=""><label for="watermark_position10"></label></div>
+																</td>
+															</tr>
+											            </tbody>
+											        </table>
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">文字水印：</td>
+												<td>
+													文字内容&nbsp;<input type="text" class="input400" name="watermark_text" id="watermark_text" value="">&nbsp;(目前不支持中文)
+													<div class="blank5"></div><div class="blank5"></div>
+													文字颜色&nbsp;<input type="text" class="input80" name="watermark_fontcolor" id="watermark_fontcolor" value="">&nbsp;
+													文字大小&nbsp;<input type="text" class="input40" name="watermark_fontsize" id="watermark_fontsize" value="">&nbsp;(1~5之间的数字)
+												</td>
+											</tr>
+											<tr>
+												<td class="post_r">图片水印：</td>
+												<td>
+													图片文件&nbsp;<input type="text" class="input400" name="watermark_imgpath" id="watermark_imgpath" value="">&nbsp;(从xxx开始算，如..)
+													<div class="blank5"></div><div class="blank5"></div>
+													图片质量&nbsp;<input type="text" class="input40" name="watermark_quality" id="watermark_quality" value="">&nbsp;(该值决定 jpg 格式图片的质量，范围从 0 到 100)
+													<div class="blank5"></div><div class="blank5"></div>
+													水印透明度&nbsp;<input type="text" class="input40" name="watermark_opactiy" id="watermark_opactiy" value="">&nbsp;(该值决定图片水印清晰度，其值范围从 0 到 100)
+												</td>
+											</tr>
 										</tbody>
 									</table>
+									<div class="blank10"></div>
 								</div>
 							</div>
 							<div class="post_action">
