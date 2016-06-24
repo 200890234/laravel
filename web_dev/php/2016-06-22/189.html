@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>yetpress - Laravel：中间件知识点 - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
+    <title>yetpress - Laravel：在 Laravel 应用中使用 pjax 进行页面加速 - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content=" 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料"/>
@@ -218,14 +218,14 @@
                                                     </div>
                         <div class="clear"></div>
                         <div class="article_content">
-                            <div class="content_title"><h4>Laravel：中间件知识点</h4></div>
+                            <div class="content_title"><h4>Laravel：在 Laravel 应用中使用 pjax 进行页面加速</h4></div>
                             <div class="article_info">
-                                发布时间：2016-06-12 &nbsp;&nbsp;
+                                发布时间：2016-06-22 &nbsp;&nbsp;
                                 发布者：mervyn &nbsp;&nbsp;
                                 <!-- 字体大小：12px 14px&nbsp; -->
-                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=173&info_url=http://cn.yetpress.com/web_dev/php/2016-06-12/173.html">[ 信息报错 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=189&info_url=http://cn.yetpress.com/web_dev/php/2016-06-22/189.html">[ 信息报错 ]</a>
                                 <a href="">[ 意见建议 ]</a>
-                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=173&info_url=http://cn.yetpress.com/web_dev/php/2016-06-12/173.html">[ 请求删帖 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=189&info_url=http://cn.yetpress.com/web_dev/php/2016-06-22/189.html">[ 请求删帖 ]</a>
                                 <a href="javascript:void(0);" class="font-bigger">[ bigger ]</a>
                             </div>
                             <div class="clear"></div>
@@ -261,58 +261,88 @@
                             <div class="clear"></div>
                             <div class="content_body">
                                 <p>
-	routes.php会自动载入web中间件分组下的路由，web组下的路由才能使用session和csrf防护。
+	来源地址：https://phphub.org/topics/44
 </p>
 <p>
-	中间件是在app/http/kernel.php文件中定义的。
-</p>
-<p align="center">
-	<a href="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/dcd97c7a8ed38f11c4181f73901b7e07.png" target="_blank"><img src="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/dcd97c7a8ed38f11c4181f73901b7e07.png" border="0" alt="" /></a>
+	<br />
 </p>
 <p>
-	在路由分组中定义要使用的中间件：
+	简单点描述, 就是利用 ajax 技术去服务器获取文档, 在不刷新浏览器页面的情况下, 更新当前页面, 并且能保证页面的 js 和 css 等 assets 文件不会被重复加载, 然后利用浏览器提供的 pushState 功能, 对 URL 进行更新, 并能保证用户通过点击 back 按钮回溯到历史页面.<br />
+注意: 并不是所有浏览器都支持 pushState,, 当浏览器不兼容的时候, 会自动使用原始的浏览方式进行访问.
 </p>
-<p align="center">
-	<a href="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/222f6660c8fd0fa19a10a6970b43c11e.png" target="_blank"><img src="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/222f6660c8fd0fa19a10a6970b43c11e.png" border="0" alt="" /></a>
+<p>
+	因为不需要整个页面刷新, 并且 assets 文件都不需要重新加载, 很大程度上提高了页面的加载速度.
 </p>
-<p style="text-align:left;">
-	&nbsp;
-</p>
-<p style="text-align:left;">
-	创建和使用路由中间件的流程：
-</p>
-<p style="text-align:left;">
-	&nbsp; &nbsp; 在终端中执行php artisan make:middleware xxx创建中间件；
-</p>
-<p style="text-align:left;">
-	&nbsp; &nbsp; 在App/Http/kernel.php中添加并设置别名:'xxx' =&gt; \App\Http\Middleware\xxx::class;
-</p>
-<p style="text-align:left;">
-	&nbsp; &nbsp; routes.php中在需要使用该中间件的路由组里添加。Route::group(['middleware' =&gt; ['web','xxx']....
-</p>
-<p style="text-align:left;">
+<p>
 	<br />
 </p>
-<p style="text-align:left;">
-	&nbsp;&nbsp;&nbsp;&nbsp;
+<p>
+	安装 rcrowe/Turbo
 </p>
-<p style="text-align:left;">
+<p>
+	在 composer.json 里的 require 属性下添加:<br />
+"rcrowe/turbo": "0.2.*"<br />
+然后 composer update 或者 composer install
+</p>
+<p>
+	<br />
+配置 Providers<br />
+编辑 app/config/app.php 文件, 在选项 providers 数组里面添加:<br />
+"Turbo\Provider\Laravel\TurboServiceProvider",
+</p>
+<p>
+	<br />
+下载 pjax.js<br />
+在 public\js 文件夹下<br />
+wget https://raw.github.com/defunkt/jquery-pjax/master/jquery.pjax.js<br />
+然后在模版里面加载此文件<br />
+&lt;script src="{{ cdn('js/jquery.pjax.js') }}"&gt;&lt;/script&gt;<br />
+最后页面里调用:<br />
+$(document).ready(function()<br />
+{<br />
+&nbsp; &nbsp; $(document).pjax('a', 'body');<br />
+});<br />
+上面的代码解释是, 把所有的 a 标签的点击事件截获, 如果当前浏览器支持 pjax 的话, 发送一个 ajax 请求, 并把参数 _pjax=body 带过去.
+</p>
+<p>
+	<br />
+至此, 已经顺利配置完毕.
+</p>
+<p>
 	<br />
 </p>
-<p style="text-align:left;">
-	&nbsp;
+<p>
+	添加加载动画：
 </p>
-<p style="text-align:left;">
-	&nbsp;
+<p>
+	添加 nprogress<br />
+使用 rstacruz/nprogress 来实现.<br />
+添加的方法是 下载 文件, 然后把 nprogress.js 和 nprogress.css 添加到页面中:<br />
+&nbsp; &nbsp; &lt;script src='nprogress.js'&gt;&lt;/script&gt;<br />
+&nbsp; &nbsp; &lt;link rel='stylesheet' href='nprogress.css'/&gt;
 </p>
-<p style="text-align:left;">
-	&nbsp;
+<p>
+	<br />
+调用<br />
+修改上面的代码, 修改后的代码如以下:<br />
+<pre class="prettyprint lang-js">$(document).ready(function()
+{
+    $(document).pjax('a', 'body');
+    $(document).on('pjax:start', function() {
+      NProgress.start();
+  });
+  $(document).on('pjax:end', function() {
+      NProgress.done();
+      self.siteBootUp();
+  });
+});</pre>
+<br />
+这样的话, 每一次点击页面的时候就会有很酷炫的效果了.<br />
 </p>                            </div>
                             <div class="article_pager"></div>
                             <div class="article_prenext">
-                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-12/172.html" title="Laravel：控制器知识点">Laravel：控制器知识点</a></p>
-                                                                                                    <p>下篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-23/191.html" title="Laravel：页面跳转相关知识点">Laravel：页面跳转相关知识点</a></p>
-                                                            </div>
+                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-22/188.html" title="Laravel：更新单条记录多个字段的快捷方法">Laravel：更新单条记录多个字段的快捷方法</a></p>
+                                                                                            </div>
                             <div class="clear"></div>
 <script>
 function CheckPl(obj){
@@ -327,11 +357,11 @@ function CheckPl(obj){
 <div class="article_comment">
     <form action="http://cn.yetpress.com/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
         <div class="comment_title"><span>发表评论</span>
-            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=173&down=2"></script></span>​条评论</a>​
+            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=189&down=2"></script></span>​条评论</a>​
         </div>
         <script>
         $(function(){
-            var url="http://cn.yetpress.com/e/pl/?classid=10&id=173";
+            var url="http://cn.yetpress.com/e/pl/?classid=10&id=189";
             $('.comment_count').click(function(){
                 //评论数链接不正常 改用window.open控制
                 window.open(url);
@@ -355,11 +385,11 @@ function CheckPl(obj){
                         <img src="http://cn.yetpress.com/e/ShowKey/?v=pl" align="absmiddle">
                     </li>
                     <li>
-                        <input name="id" type="hidden" id="id" value="173" />
+                        <input name="id" type="hidden" id="id" value="189" />
                         <input name="classid" type="hidden" id="classid" value="10" />
                         <input name="enews" type="hidden" id="enews" value="AddPl" />
                         <input name="repid" type="hidden" id="repid" value="0" />
-                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2016-06-12/173.html"><!-- 提交后返回地址 9为提交页面地址 -->
+                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2016-06-22/189.html"><!-- 提交后返回地址 9为提交页面地址 -->
                         <input type="submit" class="comment_submit" value="提交">
                         <input name="nomember" type="checkbox" id="nomember" value="1" checked="checked">匿名发表
                     </li>
@@ -407,7 +437,7 @@ function CheckPl(obj){
       <div class="meta">
         <div class="info">
             <p>
-                Server time: <strong><span id='serverTime'>2016-06-23 12:59:12</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
+                Server time: <strong><span id='serverTime'>2016-06-22 19:39:33</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
             </p>
             <p>&copy; Yetpress, LLC 2014 - Powered by empireCms <script language="javascript" type="text/javascript" src="http://js.users.51.la/17693852.js"></script><noscript><a href="http://www.51.la/?17693852" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/17693852.asp" style="border:none" /></a></noscript></p>
         </div>

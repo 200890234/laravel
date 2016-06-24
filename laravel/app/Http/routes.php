@@ -25,20 +25,18 @@ Route::get('/', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-Route::group(['middleware' => ['web'],'namespace'=>'Admin'], function () {
+Route::group(['middleware' => ['web','admin'],'namespace'=>'Admin'], function () {
     //登录注册，后台首页和布局项
 	Route::get('/admin/','AdminController@index');
 	Route::get('/admin/index','AdminController@index');
-	Route::get('/admin/login','AdminController@login');
-	Route::post('/admin/dologin','AdminController@dologin');
+
 	Route::get('/admin/left','AdminController@left');
 	Route::get('/admin/main','AdminController@main');
 
 	//菜单项
 	Route::resource('/admin/setConf','SysController');//系统参数设置
 	Route::get('/admin/setExtend','SysController@setExtend');//系统扩展设置
-	Route::get('/admin/sysModel','AdminController@sysModel');//模型表管理
-		Route::get('/admin/sysModelAdd','AdminController@sysModelAdd');//新增模型表
+	Route::resource('/admin/modTb','ModTbController');//数据表管理
 
 	//数据字典 增删改查测试项
 	Route::get('/admin/dataDict','AdminController@dataDict');
@@ -51,6 +49,10 @@ Route::group(['middleware' => ['web'],'namespace'=>'Admin'], function () {
 	Route::get('/admin/updateTemp/tb/{tb}/id/{id}','AdminController@updateTemp');//update
 	Route::get('/admin/deleteTemp/tb/{tb}/id/{id}','AdminController@deleteTemp');//delete
 	Route::post('/admin/doUpdateTemp','AdminController@doUpdateTemp');
+});
+Route::group(['middleware' => ['web'],'namespace'=>'Admin'], function () {
+	Route::get('/admin/login', 'AdminController@login');
+	Route::post('/admin/dologin','AdminController@dologin');
 });
 	Route::post('/xh/upload','XhUpload@doUpload');//这个放在group里csrf检测失败，把他拿出来不做csrf检测
 

@@ -6,14 +6,14 @@
 					"扩展设置"=>"admin/setExtend",
 				),
 				"数据库及开发日志"=>array(
-					"备份数据"=>"admin/setConf",
-					"恢复数据"=>"admin/setExtend",
+					"备份数据"=>"admin/sqlBak",
+					"恢复数据"=>"admin/sqlRecovery",
 					"数据字典文章管理"=>"admin/dataDict",
 					"开发日志文章管理"=>"admin/devNote",
 				),
 				"数据表与系统模型"=>array(
-					"新建系统模型表"=>"admin/sysModelAdd",
-					"管理系统模型表"=>"admin/sysModel",
+					"新建数据表"=>"admin/modTb/create",
+					"管理数据表"=>"admin/modTb/",
 				),
 			);
 	$infoArr=array();

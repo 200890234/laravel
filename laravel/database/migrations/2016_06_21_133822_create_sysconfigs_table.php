@@ -22,7 +22,7 @@ class CreateSysconfigsTable extends Migration
             $table->integer('config_index_pattern')->default(0)->comment('首页模式 0为静态，1为动态');
             $table->string('config_index_extension',10)->default('.html')->comment('首页文件扩展名');
             $table->string('config_allowed_filetype','255')->comment('后台上传限制文件扩展名')->nullable();
-            $table->integer('config_allowed_filesize')->comment('后台上传限制附件大小')->nullable();
+            $table->integer('config_allowed_filesize')->default(102400)->comment('后台上传限制附件大小')->nullable();
             $table->integer('config_html_listsize')->comment('栏目页生成每组数')->nullable();
             $table->integer('config_html_articlesize')->comment('文章页生成每组数')->nullable();
             $table->integer('config_search_minlength')->default(0)->comment('搜索关键字最小字符');

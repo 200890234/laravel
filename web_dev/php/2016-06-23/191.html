@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>yetpress - Laravel：中间件知识点 - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
+    <title>yetpress - Laravel：页面跳转相关知识点 - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content=" 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料"/>
@@ -218,14 +218,14 @@
                                                     </div>
                         <div class="clear"></div>
                         <div class="article_content">
-                            <div class="content_title"><h4>Laravel：中间件知识点</h4></div>
+                            <div class="content_title"><h4>Laravel：页面跳转相关知识点</h4></div>
                             <div class="article_info">
-                                发布时间：2016-06-12 &nbsp;&nbsp;
+                                发布时间：2016-06-23 &nbsp;&nbsp;
                                 发布者：mervyn &nbsp;&nbsp;
                                 <!-- 字体大小：12px 14px&nbsp; -->
-                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=173&info_url=http://cn.yetpress.com/web_dev/php/2016-06-12/173.html">[ 信息报错 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=191&info_url=http://cn.yetpress.com/web_dev/php/2016-06-23/191.html">[ 信息报错 ]</a>
                                 <a href="">[ 意见建议 ]</a>
-                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=173&info_url=http://cn.yetpress.com/web_dev/php/2016-06-12/173.html">[ 请求删帖 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=191&info_url=http://cn.yetpress.com/web_dev/php/2016-06-23/191.html">[ 请求删帖 ]</a>
                                 <a href="javascript:void(0);" class="font-bigger">[ bigger ]</a>
                             </div>
                             <div class="clear"></div>
@@ -261,58 +261,35 @@
                             <div class="clear"></div>
                             <div class="content_body">
                                 <p>
-	routes.php会自动载入web中间件分组下的路由，web组下的路由才能使用session和csrf防护。
+	<code style="white-space:normal;box-sizing:inherit;-webkit-tap-highlight-color:transparent;padding:2px;color:#777777;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;background:#FDF6E3;">Redirect::guest()</code><span style="white-space:normal;color:#444444;font-family:'Droid Serif', Georgia, 'Times New Roman', STHeiti, serif;background-color:#FFFFFF;">和</span><code style="white-space:normal;box-sizing:inherit;-webkit-tap-highlight-color:transparent;padding:2px;color:#777777;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;background:#FDF6E3;">Redirect::to()<span style="background-color:;">&nbsp;</span></code><span style="line-height:1.5;">(需要</span><span style="line-height:1.5;">use Illuminate\Support\Facades\Redirect</span><span style="line-height:1.5;">)</span> 
 </p>
 <p>
-	中间件是在app/http/kernel.php文件中定义的。
-</p>
-<p align="center">
-	<a href="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/dcd97c7a8ed38f11c4181f73901b7e07.png" target="_blank"><img src="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/dcd97c7a8ed38f11c4181f73901b7e07.png" border="0" alt="" /></a>
+	前者在重定向时会将当前url保存到session中，这样可以在登陆以后，使用Redirect::intended()方法跳转到之前的页面继续业务。
 </p>
 <p>
-	在路由分组中定义要使用的中间件：
+	<code style="box-sizing:inherit;-webkit-tap-highlight-color:transparent;padding:2px;color:#777777;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;white-space:normal;background:#FDF6E3;">Redirect::intended('/')</code><span style="color:#444444;font-family:'Droid Serif', Georgia, 'Times New Roman', STHeiti, serif;white-space:normal;">这个方法的意思是跳转到之前的页面，如果上面使用了</span><code style="box-sizing:inherit;-webkit-tap-highlight-color:transparent;padding:2px;color:#777777;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;white-space:normal;background:#FDF6E3;"><span style="background-color:;">Redirect::guest()</span></code><span style="color:#444444;font-family:'Droid Serif', Georgia, 'Times New Roman', STHeiti, serif;white-space:normal;">方法，那么intended这里就会跳转到那时候的url，而它的参数只是一个默认值，再没有记录历史url的时候会跳转到'/'。</span> 
 </p>
-<p align="center">
-	<a href="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/222f6660c8fd0fa19a10a6970b43c11e.png" target="_blank"><img src="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/222f6660c8fd0fa19a10a6970b43c11e.png" border="0" alt="" /></a>
+<p>
+	<span style="color:#444444;font-family:'Droid Serif', Georgia, 'Times New Roman', STHeiti, serif;white-space:normal;">return Redirect::to('admin/dataDict')-&gt;with('msg',$msg);</span> 
 </p>
-<p style="text-align:left;">
-	&nbsp;
+<p>
+	<span style="color:#444444;font-family:'Droid Serif', Georgia, 'Times New Roman', STHeiti, serif;white-space:normal;">return back()-&gt;with('msg',$msg);</span> 
 </p>
-<p style="text-align:left;">
-	创建和使用路由中间件的流程：
+<p>
+	<span style="color:#444444;font-family:'Droid Serif', Georgia, 'Times New Roman', STHeiti, serif;white-space:normal;background-color:#FFFFFF;"><br />
+</span> 
 </p>
-<p style="text-align:left;">
-	&nbsp; &nbsp; 在终端中执行php artisan make:middleware xxx创建中间件；
+<p>
+	<span style="color:#444444;font-family:'Droid Serif', Georgia, 'Times New Roman', STHeiti, serif;white-space:normal;background-color:#FFFFFF;"><br />
+</span> 
 </p>
-<p style="text-align:left;">
-	&nbsp; &nbsp; 在App/Http/kernel.php中添加并设置别名:'xxx' =&gt; \App\Http\Middleware\xxx::class;
-</p>
-<p style="text-align:left;">
-	&nbsp; &nbsp; routes.php中在需要使用该中间件的路由组里添加。Route::group(['middleware' =&gt; ['web','xxx']....
-</p>
-<p style="text-align:left;">
+<p>
 	<br />
-</p>
-<p style="text-align:left;">
-	&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-<p style="text-align:left;">
-	<br />
-</p>
-<p style="text-align:left;">
-	&nbsp;
-</p>
-<p style="text-align:left;">
-	&nbsp;
-</p>
-<p style="text-align:left;">
-	&nbsp;
 </p>                            </div>
                             <div class="article_pager"></div>
                             <div class="article_prenext">
-                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-12/172.html" title="Laravel：控制器知识点">Laravel：控制器知识点</a></p>
-                                                                                                    <p>下篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-23/191.html" title="Laravel：页面跳转相关知识点">Laravel：页面跳转相关知识点</a></p>
-                                                            </div>
+                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-22/189.html" title="Laravel：在 Laravel 应用中使用 pjax 进行页面加速">Laravel：在 Laravel 应用中使用 pjax 进行页面加速</a></p>
+                                                                                            </div>
                             <div class="clear"></div>
 <script>
 function CheckPl(obj){
@@ -327,11 +304,11 @@ function CheckPl(obj){
 <div class="article_comment">
     <form action="http://cn.yetpress.com/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
         <div class="comment_title"><span>发表评论</span>
-            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=173&down=2"></script></span>​条评论</a>​
+            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=191&down=2"></script></span>​条评论</a>​
         </div>
         <script>
         $(function(){
-            var url="http://cn.yetpress.com/e/pl/?classid=10&id=173";
+            var url="http://cn.yetpress.com/e/pl/?classid=10&id=191";
             $('.comment_count').click(function(){
                 //评论数链接不正常 改用window.open控制
                 window.open(url);
@@ -355,11 +332,11 @@ function CheckPl(obj){
                         <img src="http://cn.yetpress.com/e/ShowKey/?v=pl" align="absmiddle">
                     </li>
                     <li>
-                        <input name="id" type="hidden" id="id" value="173" />
+                        <input name="id" type="hidden" id="id" value="191" />
                         <input name="classid" type="hidden" id="classid" value="10" />
                         <input name="enews" type="hidden" id="enews" value="AddPl" />
                         <input name="repid" type="hidden" id="repid" value="0" />
-                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2016-06-12/173.html"><!-- 提交后返回地址 9为提交页面地址 -->
+                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2016-06-23/191.html"><!-- 提交后返回地址 9为提交页面地址 -->
                         <input type="submit" class="comment_submit" value="提交">
                         <input name="nomember" type="checkbox" id="nomember" value="1" checked="checked">匿名发表
                     </li>
@@ -407,7 +384,7 @@ function CheckPl(obj){
       <div class="meta">
         <div class="info">
             <p>
-                Server time: <strong><span id='serverTime'>2016-06-23 12:59:12</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
+                Server time: <strong><span id='serverTime'>2016-06-23 12:12:57</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
             </p>
             <p>&copy; Yetpress, LLC 2014 - Powered by empireCms <script language="javascript" type="text/javascript" src="http://js.users.51.la/17693852.js"></script><noscript><a href="http://www.51.la/?17693852" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/17693852.asp" style="border:none" /></a></noscript></p>
         </div>

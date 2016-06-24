@@ -47,7 +47,8 @@ $(function(){
 		return false;
 	});
 	//主题选项切换
-	$(".body_menutab li").eq(0).css("background","#075A5F");
+	$(".body_menutab li").length>1?$(".body_menutab li").eq(0).css("background","#075A5F"):"";//选项卡多个的时候第一个默认选中
+	
 	$('.tab_content:gt(0)').hide();
 	$(".body_menutab li").click(function() {
 		var index=$(this).index();
@@ -56,6 +57,12 @@ $(function(){
 		$('.tab_content').eq(index).show();
 		$('.tab_content').eq(index).siblings(".tab_content").hide();
 	});
+	//表格移入行的背景色
+	$('.def_row_tb tr').hover(function(){
+		$(this).addClass('hover_row');
+	},function(e){
+		$(this).removeClass('hover_row');
+	})
 	//设置checkbox状态
 	$(".c_all").click(function() {//全选 .c_item是传送数据需要获取的内容
 		if($(this).is(":checked")){

@@ -83,6 +83,7 @@ table textarea{width:800px;height:350px;padding:3px 6px;background:#C7DFD1;}
 /*#sysconf table td.post_r{text-align:left;}*/
 table.post_tb{width: 100%;}
 table.list_tb{text-align:center;}
+table.def_row_tb{text-align:center;}
 table.list_tb a{text-align:center;color:#16a085;}
 .tr_th th{background:#1ABC9C;padding:4px 0;color:#f2f2f2;}
 table.list_tb td{color:#075A5F;}
@@ -158,19 +159,26 @@ table.list_tb td{color:#075A5F;}
 	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
 }
 /*radio美化结束*/
+table tr.def_row{background:#AAF0DB;}/*表格高亮的默认背景色*/
+table tr.hover_row{background:#99E7CF;}/*表格移入背景色*/
 table.post_tb td{height:30px;padding:4px 0;font-size:14px;}
+/*各种型号的input:text*/
 table.post_tb td .input600{width:600px;padding-left:6px;}
 table.post_tb td .input400{width:400px;padding-left:6px;}
 table.post_tb td .input300{width:300px;padding-left:6px;}
 table.post_tb td .input120{width:120px;padding-left:6px;}
 table.post_tb td .input80{width:80px;padding-left:6px;}
 table.post_tb td .input40{width:40px;padding-left:6px;}
+
 table.post_tb td select{padding:0 6px;background:#C7DFD1;border:none;height:28px;}
 .post_action{margin-top:15px;margin-left:100px;}
 /*.post_action button{padding:0 6px;font-size: 12px;}*/
 td.post_l{/*width:120px;*/text-align:left;}
+td.post_lp{/*width:120px;*/text-align:left;}
 td.post_r{/*width:120px;*/text-align:right;}
 td.post_c{/*width:120px;*/text-align:center;}
+/*各种型号的textare*/
+#area600 textarea{width:600px; height:120px;}
 
 /*分页样式*/
 #listpage .pagination{margin-left: 20px;}

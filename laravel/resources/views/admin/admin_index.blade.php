@@ -38,13 +38,15 @@
     </header>
     <section class="main_left">
         <div id="loader_left">
-            <IFRAME frameBorder="0" id="left" name="left" scrolling="auto" src="{{ url('admin/left') }}?mtype=column" style="width: 100%;height:100%;visibility:inherit;z-index:2"></IFRAME>
+            <!-- <IFRAME frameBorder="0" id="left" name="left" scrolling="auto" src="{{ url('admin/left') }}?mtype=column" style="width: 100%;height:100%;visibility:inherit;z-index:2"></IFRAME> -->
+            <IFRAME frameBorder="0" id="left" name="left" scrolling="auto" src="{{ url('admin/left') }}?mtype=sys" style="width: 100%;height:100%;visibility:inherit;z-index:2"></IFRAME>
         </div>
     </section>
     <section class="main_right">
         <div class="right_wrap">
             <div id="loader_right">
-                <IFRAME frameBorder="0" id="right" name="right" scrolling="auto" src="{{ url('admin/main') }}?mtype=column" style="width: 100%;height:100%;visibility:inherit;z-index:2"></IFRAME>
+                <!-- <IFRAME frameBorder="0" id="right" name="right" scrolling="auto" src="{{ url('admin/main') }}?mtype=column" style="width: 100%;height:100%;visibility:inherit;z-index:2"></IFRAME> -->
+                <IFRAME frameBorder="0" id="right" name="right" scrolling="auto" src="{{ url('admin/setConf') }}?mtype=column" style="width: 100%;height:100%;visibility:inherit;z-index:2"></IFRAME>
             </div>
         </div>
     </section>

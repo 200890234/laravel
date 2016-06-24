@@ -34,6 +34,15 @@
 						<form action="{{ url('admin/setConf/') }}/{{$id=$data->config_id}}" method="post" id="sysconf">
 							{!! csrf_field() !!}
 							{!! method_field('PUT') !!}
+							<?php 
+								$errorinfo=$errors->sysconfig->messages();
+								$errinfo=[];
+								// echo $errorinfo['attach_dir'][0]; //$errorinfo 明明是数组为什么不能取出值呢？ 目前只能循环成新数组了
+								foreach ($errorinfo as $k => $v) {
+									$errinfo[$k]=$v[0];//新的错误信息数组
+								}
+								$errjson=json_encode($errinfo);//转换json 易于js处理
+							 ?>
 							<div class="tab_content">
 								<div class="wrap_post">
 									<!-- <div class="post_note">
@@ -42,11 +51,29 @@
 									</div> -->
 									<table cellpadding="1" cellspacing="1" class="post_tb">
 										<tbody>
-											<tr>
+											<!-- <tr>
 												<td colspan="2" style="height:auto;">
 													<span class="error">{{session('msg')}}</span>
 												</td>
-											</tr>
+											</tr> -->
+											<script>
+												$(function(){
+													// layer.tips('只想提示地精准些', '#sitename',{tipsMore: true,time:0}); //tips功能
+													var errdata=eval('('+'<?php echo $errjson ?>'+')');
+													for(i in errdata){
+														var ele="#"+i;
+														layer.tips(errdata[i], ele,{tipsMore: true,time:0}); //tips功能
+													}
+												})
+												if("{{session('msg')}}"){
+													// layer.msg("{{session('msg')}}");//最简单形式
+													layer.msg("{{session('msg')}}",{
+														shade: 0.3,
+														shadeClose:true,
+												        time:1200
+												    });
+												}
+											</script>
 											<tr>
 												<td class="post_r">站点名称：</td>
 												<td>
@@ -237,20 +264,22 @@
 											<tr>
 												<td class="post_r">后台上传文件扩展名：</td>
 												<td>
-													<input type="text" class="input300" name="allowed_filetype" id="allowed_filetype" value="{{$data->config_allowed_filesize}}">&nbsp;&nbsp;(多个请用“|”格开，如：.gif|.jpg)
+													<input type="text" class="input300" name="allowed_filetype" id="allowed_filetype" value="{{$data->config_allowed_filetype}}">&nbsp;&nbsp;(多个请用“|”格开，如：.gif|.jpg)
 												</td>
 											</tr>
 											<tr>
 												<td class="post_r">前台投稿附件设置：</td>
 												<td>
-													<input type="checkbox" name="contribution_imgup" class="c_box" id="contribution_imgup" value="{{$data->config_allowed_filesize}}">
-													<label for="contribution_imgup" style="top:4px;"></label>
+													<input type="checkbox" class="c_box" hid="contribution_imgup" id="contribution_imgup1" {{checked($data->config_contribution_imgup,1)}}>
+													<label for="contribution_imgup1" style="top:4px;"></label>
+													<input type="hidden" class="boxdata" name="contribution_imgup" id="contribution_imgup" value="{{$data->config_contribution_imgup}}">
 													开启上传图片,最大图片：<input type="text" class="input300" name="contribution_imgupsize" id="contribution_imgupsize" value="{{$data->config_contribution_imgupsize}}">&nbsp;KB
 													<div class="blank5"></div>
 													图片扩展名：<input type="text" class="input400" name="contribution_imguptype" id="contribution_imguptype" value="{{$data->config_contribution_imguptype}}">&nbsp;(多个用"|"格开)
 													<div class="blank5"></div>
-													<input type="checkbox" name="contribution_imgup" class="c_box" id="contribution_fileup" value="{{$data->config_contribution_imgup}}">
-													<label for="contribution_fileup" style="top:4px;"></label>
+													<input type="checkbox" class="c_box" hid="contribution_fileup" id="contribution_fileup2" {{checked($data->config_contribution_fileup,1)}}>
+													<label for="contribution_fileup2" style="top:4px;"></label>
+													<input type="hidden" class="boxdata" name="contribution_fileup" id="contribution_fileup" value="{{$data->config_contribution_fileup}}">
 													开启上传附件,最大附件：<input type="text" class="input300" name="contribution_fileupsize" id="contribution_fileupsize" value="{{$data->config_contribution_fileupsize}}">&nbsp;KB
 													<div class="blank5"></div>
 													附件扩展名：<input type="text" class="input400" name="contribution_fileuptype" id="contribution_fileuptype" value="{{$data->config_contribution_fileuptype}}">&nbsp;(多个用"|"格开)
@@ -271,8 +300,9 @@
 											<tr>
 												<td class="post_r">支持MYSQL查询方式：</td>
 												<td>
-													<input type="checkbox" name="bak_mysql" class="c_box" id="bak_mysql" value="{{$data->config_bak_mysql}}">
-													<label for="bak_mysql" style="top:4px;"></label>&nbsp;支持
+													<input type="checkbox" class="c_box" hid="bak_mysql" id="bak_mysql1" {{checked($data->config_bak_mysql,1)}}>
+													<label for="bak_mysql1" style="top:4px;"></label>&nbsp;支持
+													<input type="hidden" class="boxdata" name="bak_mysql" id="bak_mysql" value="{{$data->config_bak_mysql}}">
 												</td>
 											</tr>
 										</tbody>
@@ -429,7 +459,7 @@
 													宽：&nbsp;<input type="text" class="input40" name="thumbnail_width" id="thumbnail_width" value="{{$data->config_thumbnail_width}}">&nbsp;×高: <input type="text" class="input40" name="thumbnail_height" id="thumbnail_height" value="{{$data->config_thumbnail_height}}">
 												</td>
 											</tr>
-											<tr>
+											<tr style="border-bottom: 1px solid #87DFBA;height: 35px;">
 												<td class="post_r">超出部分是否截取：</td>
 												<td id="thumbnail_crop">
 													<input type="radio" name="thumbnail_crop" id="thumbnail_crop1" class="r_dio" value="0" {{checked($data->config_thumbnail_crop,0)}}>
@@ -534,5 +564,15 @@
 		}
 		sel_set($('#preset_ext'),$('#index_extension'));
 		sel_set($('#datedir'),$('#attach_datedir'));
+		$(".c_box").click(function() {//checkbox选择时的val变化
+			// alert($(this).val());
+			var ck=$(this).prop("checked");//点击以后的结果 false or true
+			var hid="#"+$(this).attr('hid');
+			if(!ck){
+				$(hid).val(0);
+			}else{
+				$(hid).val(1);
+			}
+		});
 	})
-</script>				
+</script>

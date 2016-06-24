@@ -3,3 +3,4 @@
 <script src="{{asset('js/admin.js')}}"></script>
 <script src="{{asset('xheditor/xheditor-1.2.2.min.js')}}"></script>
 <script src="{{asset('xheditor/xheditor_lang/zh-cn.js')}}"></script>
+<script src="{{asset('jqlib/layer/layer.js')}}"></script>

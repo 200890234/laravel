@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>yetpress - Laravel：中间件知识点 - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
+    <title>yetpress - 帝国cms：模型相关数据表结构 - 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content=" 网站建设 资源分享 网络赚钱 英语学习 创意恶搞 绝密资料"/>
@@ -218,14 +218,14 @@
                                                     </div>
                         <div class="clear"></div>
                         <div class="article_content">
-                            <div class="content_title"><h4>Laravel：中间件知识点</h4></div>
+                            <div class="content_title"><h4>帝国cms：模型相关数据表结构</h4></div>
                             <div class="article_info">
-                                发布时间：2016-06-12 &nbsp;&nbsp;
+                                发布时间：2016-06-24 &nbsp;&nbsp;
                                 发布者：mervyn &nbsp;&nbsp;
                                 <!-- 字体大小：12px 14px&nbsp; -->
-                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=173&info_url=http://cn.yetpress.com/web_dev/php/2016-06-12/173.html">[ 信息报错 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=2&info_id=193&info_url=http://cn.yetpress.com/web_dev/php/2016-06-24/193.html">[ 信息报错 ]</a>
                                 <a href="">[ 意见建议 ]</a>
-                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=173&info_url=http://cn.yetpress.com/web_dev/php/2016-06-12/173.html">[ 请求删帖 ]</a>
+                                <a href="http://cn.yetpress.com/e/tool/feedback/?bid=3&info_id=193&info_url=http://cn.yetpress.com/web_dev/php/2016-06-24/193.html">[ 请求删帖 ]</a>
                                 <a href="javascript:void(0);" class="font-bigger">[ bigger ]</a>
                             </div>
                             <div class="clear"></div>
@@ -261,58 +261,38 @@
                             <div class="clear"></div>
                             <div class="content_body">
                                 <p>
-	routes.php会自动载入web中间件分组下的路由，web组下的路由才能使用session和csrf防护。
+	在官方帮助手册中的数据字典中，模型涉及到的数据表给出的有以下几个：
 </p>
 <p>
-	中间件是在app/http/kernel.php文件中定义的。
-</p>
-<p align="center">
-	<a href="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/dcd97c7a8ed38f11c4181f73901b7e07.png" target="_blank"><img src="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/dcd97c7a8ed38f11c4181f73901b7e07.png" border="0" alt="" /></a>
+	phome_enewsf &nbsp;<strong style="font-family:Tahoma, Verdana;line-height:normal;white-space:normal;"><span style="color:#0000FF;">模型字段表</span></strong><br />
+phome_enewsmod&nbsp;<strong style="font-family:Tahoma, Verdana;line-height:normal;white-space:normal;"><span style="color:#0000FF;">系统模型表</span></strong><br />
+phome_enewstable&nbsp;<strong style="font-family:Tahoma, Verdana;line-height:normal;white-space:normal;"><span style="color:#0000FF;">模型数据表表</span></strong><br />
+phome_enewssql&nbsp;<strong style="font-family:Tahoma, Verdana;line-height:normal;white-space:normal;"><span style="color:#0000FF;">SQL表</span></strong><br />
+phome_enewsyh&nbsp;<strong style="font-family:Tahoma, Verdana;line-height:normal;white-space:normal;"><span style="color:#0000FF;">优化方案表</span></strong><br />
+常用的是前三个表。
 </p>
 <p>
-	在路由分组中定义要使用的中间件：
+	帝国cms<span style="color:#E56600;">新建和使用数据表和模型的步骤</span>是：
 </p>
-<p align="center">
-	<a href="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/222f6660c8fd0fa19a10a6970b43c11e.png" target="_blank"><img src="http://cn.yetpress.com/d/file/web_dev/php/2016-06-12/222f6660c8fd0fa19a10a6970b43c11e.png" border="0" alt="" /></a>
+<p>
+	&nbsp; &nbsp; 1、新建数据表 会在数据库中生成相应的新表"表前缀_ecms_infoclass_表名"，默认内置几个系统字段。
 </p>
-<p style="text-align:left;">
-	&nbsp;
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 同时数据表的创建信息(表名，表说明等)会被插入<span style="white-space:normal;">phome_enewstable表中。</span> 
 </p>
-<p style="text-align:left;">
-	创建和使用路由中间件的流程：
+<p>
+	&nbsp; &nbsp; 2、在管理数据表中管理字段和系统模型
 </p>
-<p style="text-align:left;">
-	&nbsp; &nbsp; 在终端中执行php artisan make:middleware xxx创建中间件；
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 新增字段：字段信息会被插入<span style="white-space:normal;">phome_enewsf表中</span>，包含字段所属的数据表id和数据表名。
 </p>
-<p style="text-align:left;">
-	&nbsp; &nbsp; 在App/Http/kernel.php中添加并设置别名:'xxx' =&gt; \App\Http\Middleware\xxx::class;
-</p>
-<p style="text-align:left;">
-	&nbsp; &nbsp; routes.php中在需要使用该中间件的路由组里添加。Route::group(['middleware' =&gt; ['web','xxx']....
-</p>
-<p style="text-align:left;">
-	<br />
-</p>
-<p style="text-align:left;">
-	&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-<p style="text-align:left;">
-	<br />
-</p>
-<p style="text-align:left;">
-	&nbsp;
-</p>
-<p style="text-align:left;">
-	&nbsp;
-</p>
-<p style="text-align:left;">
-	&nbsp;
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 新增系统模型：一个表可以有多个系统模型，同一个表下的系统模型字段完全一样，但是可以设置不同的录入模板和字段配置(如是否必填，是否是录入项等)；新建的系统模型会被插入到<span style="white-space:normal;">phome_enewsmod表中，</span>包含<span style="white-space:normal;">录入模板和字段配置等。</span> 
 </p>                            </div>
                             <div class="article_pager"></div>
                             <div class="article_prenext">
-                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-12/172.html" title="Laravel：控制器知识点">Laravel：控制器知识点</a></p>
-                                                                                                    <p>下篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-23/191.html" title="Laravel：页面跳转相关知识点">Laravel：页面跳转相关知识点</a></p>
-                                                            </div>
+                                                                    <p>上篇：<a href="http://cn.yetpress.com/web_dev/php/2016-06-23/192.html" title="Laravel：单个表很多个字段的验证和赋值批量处理方法">Laravel：单个表很多个字段的验证和赋值批量处理方法</a></p>
+                                                                                            </div>
                             <div class="clear"></div>
 <script>
 function CheckPl(obj){
@@ -327,11 +307,11 @@ function CheckPl(obj){
 <div class="article_comment">
     <form action="http://cn.yetpress.com/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
         <div class="comment_title"><span>发表评论</span>
-            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=173&down=2"></script></span>​条评论</a>​
+            <a href=javascript:void(0) class="comment_count" target="_blank">​共有<span>​<script type="text/javascript" src="http://cn.yetpress.com/e/public/ViewClick/?classid=10&id=193&down=2"></script></span>​条评论</a>​
         </div>
         <script>
         $(function(){
-            var url="http://cn.yetpress.com/e/pl/?classid=10&id=173";
+            var url="http://cn.yetpress.com/e/pl/?classid=10&id=193";
             $('.comment_count').click(function(){
                 //评论数链接不正常 改用window.open控制
                 window.open(url);
@@ -355,11 +335,11 @@ function CheckPl(obj){
                         <img src="http://cn.yetpress.com/e/ShowKey/?v=pl" align="absmiddle">
                     </li>
                     <li>
-                        <input name="id" type="hidden" id="id" value="173" />
+                        <input name="id" type="hidden" id="id" value="193" />
                         <input name="classid" type="hidden" id="classid" value="10" />
                         <input name="enews" type="hidden" id="enews" value="AddPl" />
                         <input name="repid" type="hidden" id="repid" value="0" />
-                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2016-06-12/173.html"><!-- 提交后返回地址 9为提交页面地址 -->
+                        <input type="hidden" name="ecmsfrom" value="http://cn.yetpress.com/web_dev/php/2016-06-24/193.html"><!-- 提交后返回地址 9为提交页面地址 -->
                         <input type="submit" class="comment_submit" value="提交">
                         <input name="nomember" type="checkbox" id="nomember" value="1" checked="checked">匿名发表
                     </li>
@@ -407,7 +387,7 @@ function CheckPl(obj){
       <div class="meta">
         <div class="info">
             <p>
-                Server time: <strong><span id='serverTime'>2016-06-23 12:59:12</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
+                Server time: <strong><span id='serverTime'>2016-06-24 12:22:41</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
             </p>
             <p>&copy; Yetpress, LLC 2014 - Powered by empireCms <script language="javascript" type="text/javascript" src="http://js.users.51.la/17693852.js"></script><noscript><a href="http://www.51.la/?17693852" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/17693852.asp" style="border:none" /></a></noscript></p>
         </div>

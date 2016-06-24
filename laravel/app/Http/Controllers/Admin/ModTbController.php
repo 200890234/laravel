@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\SysModel;
+use App\Models\Admin\ModTbModel;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
-class SysController extends Controller
+class ModTbController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +22,7 @@ class SysController extends Controller
     public function index()
     {
         //
-        $data=SysModel::find(1);
-        return view("admin/set_conf",['data'=>$data]);
+        return view('admin/modtb_index');
     }
 
     /**
@@ -32,6 +33,8 @@ class SysController extends Controller
     public function create()
     {
         //
+        $prefix=Config::get('database.connections.mysql.prefix');
+        return view('admin/modtb_add',compact('prefix'));
     }
 
     /**
@@ -43,6 +46,32 @@ class SysController extends Controller
     public function store(Request $request)
     {
         //
+        $input=Input::except(['_token']);
+        $messages=[
+            'tb_name.required'=>'数据表名必填',
+            'tb_name.regex'=>'数据表名只能是数字和字母',
+            'tb_namecn.required'=>'数据表中文名必填',
+        ];
+        $rules=[
+                "tb_name"=>["required","regex:/^[0-9a-zA-Z]+$/"],
+                "tb_namecn"=>"required|",
+            ];
+        $validator = validator::make($input,$rules,$messages);
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+        //循环赋值
+        $modtb=[];
+        foreach($input as $k=>$v){
+            $modtb[$k]=$v;
+        }
+        //dd($modtb);exit;
+        $ins=DB::table("modtables")->insert($modtb);
+        if($ins){
+            return back()->with('msg','添加成功');
+        }else{
+            return back()->with('msg','添加失败');
+        }
     }
 
     /**
@@ -77,37 +106,6 @@ class SysController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $input=Input::except(['_token','_method']);
-        $messages=[
-            'sitename.required'=>'站点名称必填',
-            'sitepath.required'=>'网站地址必填',
-            'attach_dir.required'=>'附件地址必填',
-            'email.email'=>'邮箱格式错误',
-            'register_score.numeric'=>'注册赠送点数必须是数字',
-        ];
-        $validator = validator::make($input,[
-            "sitename"=>"required|",
-            "sitepath"=>"required|",
-            "attach_dir"=>"required|",
-            "email"=>"email|",
-            "register_score"=>"numeric|",
-        ],$messages);
-        if($validator->fails()){
-            return back()->withErrors($validator,"sysconfig")->withInput();
-        }
-        $config=SysModel::find(1);
-        //$config->config_description=$input["description"];
-        //循环赋值
-        foreach($input as $k=>$v){
-            $f="config_".$k;
-            $config->$f=$v;
-        }
-        $up=$config->save();
-        if($up){
-            return back()->with('msg','更新成功');
-        }else{
-            return back()->with('msg','更新失败');
-        }
     }
 
     /**
