@@ -9,4 +9,5 @@ class ModTbModel extends Model
     //
     protected $table="modtables";
     protected $primaryKey="tb_id";
+    protected $guarded=[];
 }

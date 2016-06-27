@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class ModTbController extends Controller
+class ModTbController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class ModTbController extends Controller
     public function index()
     {
         //
-        return view('admin/modtb_index');
+        return view('admin/mod/modtb_index');
     }
 
     /**
@@ -34,7 +34,7 @@ class ModTbController extends Controller
     {
         //
         $prefix=Config::get('database.connections.mysql.prefix');
-        return view('admin/modtb_add',compact('prefix'));
+        return view('admin/mod/modtb_add',compact('prefix'));
     }
 
     /**
@@ -66,7 +66,9 @@ class ModTbController extends Controller
             $modtb[$k]=$v;
         }
         //dd($modtb);exit;
-        $ins=DB::table("modtables")->insert($modtb);
+        //$ins=DB::table("modtables")->insert($modtb);
+        //改用create方法来插入数据，自动处理update_at和create_at 注意需要在模型里定义$fillable或$guarded数组
+        $ins=ModTbModel::Create($modtb);
         if($ins){
             return back()->with('msg','添加成功');
         }else{

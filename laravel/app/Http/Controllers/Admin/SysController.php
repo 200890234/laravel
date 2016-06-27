@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
-class SysController extends Controller
+class SysController extends BaseController
 {
     /**
      * Display a listing of the resource.

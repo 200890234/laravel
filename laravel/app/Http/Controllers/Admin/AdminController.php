@@ -12,7 +12,7 @@ use Request;
 use Captcha;//使用验证码类
 use App\Models\Admin\AdminModel;//使用模型
 
-class AdminController extends Controller
+class AdminController extends BaseController
 {
     public function index()
     {
