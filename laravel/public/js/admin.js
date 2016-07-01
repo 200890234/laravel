@@ -1,15 +1,17 @@
+/********************封装函数部分******************/
+//替换url参数方法
+function replaceUrlParam(oldUrl, paramName, replaceWith) {
+    var re = eval('/(' + paramName + '=)([^&]*)/gi');
+    var nUrl = oldUrl.replace(re, paramName + '=' + replaceWith);
+    return nUrl;
+}
+function clearForm(){//清除所有表单元素的值  放在$(function(){})里面不能被其他页面正常引用到 _token _method 等隐藏域要排除
+	$("form").find(':input')
+		.not(':button, :submit, :reset, :hidden').val('')
+		.removeAttr('checked').removeAttr('selected');
+}
 $(function(){
-	//替换url参数方法
-	function replaceUrlParam(oldUrl, paramName, replaceWith) {
-	    var re = eval('/(' + paramName + '=)([^&]*)/gi');
-	    var nUrl = oldUrl.replace(re, paramName + '=' + replaceWith);
-	    return nUrl;
-	}
-	function clearForm(){//清除所有表单元素的值
-		$("form").find(':input')
-			.not(':button, :submit, :reset').val('')
-			.removeAttr('checked').removeAttr('selected');
-	}
+	/********************网页特效部分******************/
 	// 导航特效
 	$('.topul>li').hover(function() {
 		$(this).find("ul").stop().slideDown(300);
@@ -76,6 +78,17 @@ $(function(){
 			$('.c_box').prop("checked",false);
 		}
 	});
+	//刷新后台登录验证码
+	function refCode(ele){
+		$(ele).click(function() {
+			var src=$("#capCode").attr("src");
+			var newsrc=src+"?"+Math.random(12);
+			$("#capCode").attr("src",newsrc);
+		});
+	}
+	refCode('#capCode');
+	refCode('#refCode');
+	/********************ajax提交部分******************/
 	$("#batDelete").click(function() {
 		var cur=$(this);
 		//获取所有选中的值 用,拼接
@@ -103,20 +116,27 @@ $(function(){
 			})
 		}
 	});
-	//刷新后台登录验证码
-	function refCode(ele){
-		$(ele).click(function() {
-			var src=$("#capCode").attr("src");
-			var newsrc=src+"?"+Math.random(12);
-			$("#capCode").attr("src",newsrc);
-		});
-	}
-	refCode('#capCode');
-	refCode('#refCode');
+	//资源路由 单个删除ajax
+	$(".ajaxDel").click(function(e) {
+		e.preventDefault();
+		var cur=$(this);
+		//删除确认
+		layer.confirm("确认删除？",function(index){
+			//ajax提交删除请求
+			var url=cur.prop("href");
+			var token=cur.attr('token');
+			var d={"_method":"delete","_token":token};
+			$.post(url, d, function(data) {
+				layer.msg(data,{
+					shade: 0.3,
+					shadeClose:true,
+					time:1200
+				},function(){
+					location.reload();
+				});
+			});			
+		})
+	});
 })
 
-	function clearForm(){//清除所有表单元素的值  放在$(function(){})里面不能被其他页面正常引用到
-		$("form").find(':input')
-			.not(':button, :submit, :reset').val('')
-			.removeAttr('checked').removeAttr('selected');
-	}
+

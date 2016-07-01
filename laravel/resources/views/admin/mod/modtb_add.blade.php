@@ -20,11 +20,13 @@ function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符�
 			<?php 
 				$action=url('admin/modTb').'/'.$data->tb_id;  //update的提交地址
 				$method="put";
+				$act='update';//表示是update操作 提交完成后不清空表单数据
 			?>
 		@else
 		    <?php 
 		    	$action=url('admin/modTb');	//create的提交地址
 				$method="post";
+				$act='';
 		    ?>
 		@endif
 		<form action="{{$action}}" method="post">
@@ -89,7 +91,9 @@ function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符�
 			shadeClose:true,
 			time:1200
 		},function(){
-			clearForm();
+			if("<?php echo $act ?>"!="update"){
+				clearForm();
+			}
 		});
 	}
 </script>

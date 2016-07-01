@@ -31,15 +31,15 @@ function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符�
 							<td>{{$tb->tb_id}}</td>
 							<td class="post_l"><a href="">{{$tb->tb_name}} ({{$tb->tb_namecn}})</a></td>
 							<td>
-								[<a href="http://cn.yetpress.com/laravel/public/admin/updateTemp/tb/article_others/id/1">管理字段</a>]
-								[<a href="http://cn.yetpress.com/laravel/public/admin/deleteTemp/tb/article_others/id/1">管理系统模型</a>]
-								[<a href="http://cn.yetpress.com/laravel/public/admin/deleteTemp/tb/article_others/id/1">管理分表</a>]
+								[<a href="">管理字段</a>]
+								[<a href="">管理系统模型</a>]
+								[<a href="">管理分表</a>]
 							</td>
 							<td>
 								[<a href="{{ url('admin/modTb/setDefTb/') }}/{{ $tb->tb_id }}">设为默认表</a>]
 								[<a href="{{ url('admin/modTb/copyTb') }}/{{$tb->tb_id}}">复制</a>]
 								[<a href="{{ url('admin/modTb') }}/{{ $tb->tb_id }}/edit">修改</a>]
-								[<a href="http://cn.yetpress.com/laravel/public/admin/deleteTemp/tb/article_others/id/1">删除</a>]
+								[<a href="{{ url('admin/modTb') }}/{{ $tb->tb_id }}" class="ajaxDel" token="<?php echo csrf_token(); ?>">删除</a>]
 							</td>
 						</tr>
 					@endforeach

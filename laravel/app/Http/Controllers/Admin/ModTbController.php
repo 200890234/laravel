@@ -138,6 +138,14 @@ class ModTbController extends BaseController
     public function destroy($id)
     {
         //
+        $row=ModTbModel::find($id);
+        $del=$row->delete();//成功则返回true
+        if($del){
+            $msg="删除成功";
+        }else{
+            $msg="删除失败";
+        }
+        echo $msg;//ajax返回
     }
 
     /**
