@@ -5,6 +5,11 @@ $(function(){
 	    var nUrl = oldUrl.replace(re, paramName + '=' + replaceWith);
 	    return nUrl;
 	}
+	function clearForm(){//清除所有表单元素的值
+		$("form").find(':input')
+			.not(':button, :submit, :reset').val('')
+			.removeAttr('checked').removeAttr('selected');
+	}
 	// 导航特效
 	$('.topul>li').hover(function() {
 		$(this).find("ul").stop().slideDown(300);
@@ -109,3 +114,9 @@ $(function(){
 	refCode('#capCode');
 	refCode('#refCode');
 })
+
+	function clearForm(){//清除所有表单元素的值  放在$(function(){})里面不能被其他页面正常引用到
+		$("form").find(':input')
+			.not(':button, :submit, :reset').val('')
+			.removeAttr('checked').removeAttr('selected');
+	}

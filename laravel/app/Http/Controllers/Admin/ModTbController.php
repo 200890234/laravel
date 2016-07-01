@@ -22,7 +22,8 @@ class ModTbController extends BaseController
     public function index()
     {
         //
-        return view('admin/mod/modtb_index');
+        $tbs=DB::table('modtables')->get();
+        return view('admin/mod/modtb_index',["tbs"=>$tbs]);
     }
 
     /**
@@ -34,7 +35,7 @@ class ModTbController extends BaseController
     {
         //
         $prefix=Config::get('database.connections.mysql.prefix');
-        return view('admin/mod/modtb_add',compact('prefix'));
+        return view('admin/mod/modtb_add',compact('prefix','data'));
     }
 
     /**
@@ -47,6 +48,7 @@ class ModTbController extends BaseController
     {
         //
         $input=Input::except(['_token']);
+        // var_dump($input);exit;
         $messages=[
             'tb_name.required'=>'数据表名必填',
             'tb_name.regex'=>'数据表名只能是数字和字母',
@@ -96,6 +98,10 @@ class ModTbController extends BaseController
     public function edit($id)
     {
         //
+        $row=ModTbModel::find($id);
+        // dd($row);exit;
+        $prefix=Config::get('database.connections.mysql.prefix');
+        return view('admin/mod/modtb_add',['prefix'=>$prefix,'data'=>$row]);
     }
 
     /**
@@ -108,6 +114,19 @@ class ModTbController extends BaseController
     public function update(Request $request, $id)
     {
         //
+        $data=Input::except(['_method','_token']);
+        // dd($data);
+        $row=ModTbModel::find($id);
+        $row->tb_name=$data['tb_name'];
+        $row->tb_namecn=$data['tb_namecn'];
+        $row->tb_intro=$data['tb_intro'];
+        $up=$row->save();//save()方法返回 true
+        if($up){
+            $msg="修改成功";
+        }else{
+            $msg="修改失败";
+        }
+        return back()->with('msg',$msg);
     }
 
     /**
@@ -119,5 +138,27 @@ class ModTbController extends BaseController
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * 设置默认表    
+     */
+    public function setDefTb($tbid){
+        //设置其他表为非默认
+        DB::table('modtables')->where('tb_isdefault','1')->update(['tb_isdefault'=>0]);
+        //save()或update()方法设置当前表为默认表
+        $row=ModTbModel::find($tbid);
+        $row->tb_isdefault='1';
+        $row->save();//save()方法返回 true
+        // $up=DB::table('modtables')->where('tb_id',$tbid)->update(['tb_isdefault'=>1]);//update方法 返回1
+        return back()->with('msg','操作成功');
+    }
+    /**
+     * 复制表操作
+     */
+    public function copyTb($id){
+        $prefix=Config::get('database.connections.mysql.prefix');
+        $copyer=ModTbModel::find($id);
+        return view("admin/mod/modtb_add",compact('prefix','copyer'));
     }
 }

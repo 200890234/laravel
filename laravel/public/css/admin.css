@@ -159,8 +159,9 @@ table.list_tb td{color:#075A5F;}
 	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
 }
 /*radio美化结束*/
-table tr.def_row{background:#AAF0DB;}/*表格高亮的默认背景色*/
-table tr.hover_row{background:#99E7CF;}/*表格移入背景色*/
+table tr.def_row{background:#99E7CF;}/*表格高亮的默认背景色*/
+/*table tr.hover_row{background:#AAF0DB;}*//*表格移入背景色*/
+table tr.hover_row{background:#C3DFC6;}/*表格移入背景色*/
 table.post_tb td{height:30px;padding:4px 0;font-size:14px;}
 /*各种型号的input:text*/
 table.post_tb td .input600{width:600px;padding-left:6px;}

@@ -16,7 +16,19 @@ function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符�
 	</ul>
 	<div class="clear"></div>
 	<div class="tab_content">
-		<form action="{{url('admin/modTb')}}" method="post">
+		@if (isset($data) && is_object($data))
+			<?php 
+				$action=url('admin/modTb').'/'.$data->tb_id;  //update的提交地址
+				$method="put";
+			?>
+		@else
+		    <?php 
+		    	$action=url('admin/modTb');	//create的提交地址
+				$method="post";
+		    ?>
+		@endif
+		<form action="{{$action}}" method="post">
+			{!! method_field($method) !!}
 			{!! csrf_field() !!}
 			<div class="wrap_post">
 				<table cellpadding="1" cellspacing="1" class="post_tb">
@@ -24,19 +36,19 @@ function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符�
 					<tr>
 						<td>数据表名：</td>
 						<td>
-							{{$prefix}} ecms_ <input type="text" class="input300" name="tb_name" id="tb_name" value="">&nbsp;*(如:news,只能由字母、数字组成)
+							{{$prefix}} ecms_ <input type="text" class="input300" name="tb_name" id="tb_name" value="{{$data->tb_name or old('tb_name')}}{{$copyer->tb_name or ''}}">&nbsp;*(如:news,只能由字母、数字组成)
 						</td>
 					</tr>
 					<tr>
 						<td>数据表中文名：</td>
 						<td>
-							<input type="text" class="input400" name="tb_namecn" id="tb_namecn" value="">&nbsp;*(如:新闻数据表)
+							<input type="text" class="input400" name="tb_namecn" id="tb_namecn" value="{{$data->tb_namecn or old('tb_namecn')}}{{$copyer->tb_namecn or ''}}">&nbsp;*(如:新闻数据表)
 						</td>
 					</tr>
 					<tr>
 						<td>数据表简介：</td>
 						<td id="area600">
-							<textarea name="tb_intro" id="tb_intro"></textarea>
+							<textarea name="tb_intro" id="tb_intro">{{$data->tb_intro or old('tb_intro')}}{{$copyer->tb_intro or ''}}</textarea>
 						</td>
 					</tr>
 					</tbody>
@@ -76,6 +88,8 @@ function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符�
 			shade: 0.3,
 			shadeClose:true,
 			time:1200
+		},function(){
+			clearForm();
 		});
 	}
 </script>

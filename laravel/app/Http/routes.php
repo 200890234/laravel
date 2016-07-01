@@ -37,6 +37,8 @@ Route::group(['middleware' => ['web','admin'],'namespace'=>'Admin'], function ()
 	Route::resource('/admin/setConf','SysController');//系统参数设置
 	Route::get('/admin/setExtend','SysController@setExtend');//系统扩展设置
 	Route::resource('/admin/modTb','ModTbController');//数据表管理
+	Route::get('/admin/modTb/setDefTb/{tbid}','ModTbController@setDefTb');//设置默认表
+	Route::get('/admin/modTb/copyTb/{id}','ModTbController@copyTb');
 
 	//数据字典 增删改查测试项
 	Route::get('/admin/dataDict','AdminController@dataDict');
