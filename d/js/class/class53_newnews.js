@@ -1,1 +1,1 @@
-document.write("<li><a href=\"http://cn.yetpress.com/english/entertainment/2015-09-01/106.html\" title=\"4 Ways to Play a Prank\">4 Ways to Play a Prank</a></li>");
+document.write("<li><a href=\"http://cn.yetpress.com/english/entertainment/2016-06-17/182.html\" title=\"Describing disasters and unpleasant ending\">Describing disasters and unpleas</a></li><li><a href=\"http://cn.yetpress.com/english/entertainment/2016-06-16/180.html\" title=\"Collections of some useful conversations\">Collections of some useful conve</a></li>");

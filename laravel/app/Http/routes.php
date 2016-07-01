@@ -47,7 +47,7 @@ Route::group(['middleware' => ['web','admin'],'namespace'=>'Admin'], function ()
 	Route::post('/admin/doPostTemp','AdminController@doPostTemp');
 	Route::post('/admin/dataDict','AdminController@dataDict');//list
 	Route::get('/admin/updateTemp/tb/{tb}/id/{id}','AdminController@updateTemp');//update
-	Route::get('/admin/deleteTemp/tb/{tb}/id/{id}','AdminController@deleteTemp');//delete
+	Route::get('/admin/deleteTemp/tb/{tb}/id/{id}/{ajax?}','AdminController@deleteTemp');//delete
 	Route::post('/admin/doUpdateTemp','AdminController@doUpdateTemp');
 });
 Route::group(['middleware' => ['web'],'namespace'=>'Admin'], function () {

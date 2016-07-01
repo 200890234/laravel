@@ -72,7 +72,7 @@ $(function(){
 		}
 	});
 	$("#batDelete").click(function() {
-		var url=$(this).attr('url');
+		var cur=$(this);
 		//获取所有选中的值 用,拼接
 		var len=$('.c_item:checked').length;
 		var str="";
@@ -83,13 +83,19 @@ $(function(){
 		if(str==""){
 			alert("未做任何选择");
 		}else{//批量删除ajax
-			var url=url+str;
-			$.get(url, function(data) {
-				alert(data);
-				var link=window.location.href;
-				link=replaceUrlParam(link,"page","1");
-				window.location.href=link;//跳转回到第一页
-			});
+			layer.confirm("确认删除？",function(index){
+				var url=cur.attr('url');
+				url=url+str+"/ajax";
+				$.get(url, function(data) {
+					// alert(data);
+					layer.close(index);
+					layer.msg(data,{time:600,shade: 0.3,shadeClose:true,},function(){
+						var link=window.location.href;
+						link=replaceUrlParam(link,"page","1");
+						window.location.href=link;//跳转回到第一页
+					});
+				});
+			})
 		}
 	});
 	//刷新后台登录验证码

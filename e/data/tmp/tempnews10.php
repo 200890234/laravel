@@ -471,7 +471,7 @@ $bqno++;
 ?>
                                 <?php
 $bqno=0;
-$ecms_bq_sql=sys_ReturnEcmsLoopBq("select * from [!db.pre!]ecms_news where id>'$navinfor[id]' and classid='$navinfor[classid]' order by id desc limit 1",1,24,0);
+$ecms_bq_sql=sys_ReturnEcmsLoopBq("select * from [!db.pre!]ecms_news where id>'$navinfor[id]' and classid='$navinfor[classid]' order by id asc limit 1",1,24,0);
 if($ecms_bq_sql){
 while($bqr=$empire->fetch($ecms_bq_sql)){
 $bqsr=sys_ReturnEcmsLoopStext($bqr);

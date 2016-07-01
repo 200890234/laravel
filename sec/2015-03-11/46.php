@@ -276,7 +276,7 @@
                             <div class="article_pager"></div>
                             <div class="article_prenext">
                                                                     <p>上篇：<a href="http://cn.yetpress.com/sec/2015-02-28/6.php" title="帝国cms：yetpress_cn系统文件修改记录">帝国cms：yetpress_cn系统文件修改记录</a></p>
-                                                                                                    <p>下篇：<a href="http://cn.yetpress.com/sec/2015-12-20/129.php" title="暂存">暂存</a></p>
+                                                                                                    <p>下篇：<a href="http://cn.yetpress.com/sec/2015-03-28/70.php" title="代发货相关信息">代发货相关信息</a></p>
                                                             </div>
                             <div class="clear"></div>
 <script>
@@ -372,7 +372,7 @@ function CheckPl(obj){
       <div class="meta">
         <div class="info">
             <p>
-                Server time: <strong><span id='serverTime'>2016-06-27 11:31:42</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
+                Server time: <strong><span id='serverTime'>2016-06-28 19:18:22</span></strong>&nbsp;&nbsp;&nbsp;Users currently online: <strong><span id='usersOnline'>667</span></strong>&nbsp;&nbsp;&nbsp;Accounts registered: <strong><span id='accountsRegistered'>61744</span></strong><br />
             </p>
             <p>&copy; Yetpress, LLC 2014 - Powered by empireCms <script language="javascript" type="text/javascript" src="http://js.users.51.la/17693852.js"></script><noscript><a href="http://www.51.la/?17693852" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/17693852.asp" style="border:none" /></a></noscript></p>
         </div>

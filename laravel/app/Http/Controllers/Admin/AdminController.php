@@ -152,7 +152,7 @@ class AdminController extends BaseController
         //echo '<script>alert("'.$msg.'");</script>';
         return Redirect::to('admin/dataDict')->with('msg',$msg);
     }
-    public function deleteTemp($tb,$ids){// 简单列表页面
+    public function deleteTemp($tb,$ids,$ajax=null){// 简单列表页面
         //单个删除和批量删除 in(....)
         $ids=explode(",", $ids);
         $del=adminModel::deleteDataDict($tb,$ids);
@@ -161,7 +161,10 @@ class AdminController extends BaseController
         }else{
             $msg="删除失败";
         }
-//        echo $msg;
-        return Redirect::to('admin/dataDict')->with('msg',$msg);
+        if($ajax=="ajax"){
+            echo $msg;
+        }else{
+            return Redirect::to('admin/dataDict')->with('msg',$msg);
+        }
     }
 }
