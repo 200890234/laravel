@@ -39,6 +39,16 @@ Route::group(['middleware' => ['web','admin'],'namespace'=>'Admin'], function ()
 	Route::resource('/admin/modTb','ModTbController');//数据表管理
 	Route::get('/admin/modTb/setDefTb/{tbid}','ModTbController@setDefTb');//设置默认表
 	Route::get('/admin/modTb/copyTb/{id}','ModTbController@copyTb');
+	Route::resource('/admin/mods','ModController');//系统模型
+	Route::get('/admin/mods/{tbid}/list','ModController@index');
+	Route::get('/admin/mods/{tbid}/create','ModController@create');
+	Route::get('/admin/modTb/setDefMod/{modid}','ModController@setDefMod');//设置默认模型
+	Route::get('/admin/modTb/{tbid}/septb','ModTbController@sepTb');//分表管理
+	Route::post('/admin/modTb/addSepTb','ModTbController@addSepTb');//增加分表
+	Route::post('/admin/modTb/{tb}/delSepTb','ModTbController@delSepTb');//删除分表
+	Route::get('/admin/modTb/{tb}/setDefSepTb','ModTbController@setDefSepTb');//设置为默认分表分表
+	Route::get('/admin/modTb/{id}/fields','ModTbController@fields');//模型数据表字段管理
+	Route::post('admin/modTb/field/setOrder','ModTbController@setOrder');//字段排序
 
 	//数据字典 增删改查测试项
 	Route::get('/admin/dataDict','AdminController@dataDict');

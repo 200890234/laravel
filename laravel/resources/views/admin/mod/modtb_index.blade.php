@@ -9,7 +9,7 @@ function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符�
 	return $str;
 }
 ?>
-<p>位置： 管理数据表 > 新建数据表</p>
+<p>位置： 管理数据表 > 管理数据表</p>
 <div class="main_body">
 	<ul class="body_menutab">
 		<li>管理数据表</li>
@@ -31,9 +31,9 @@ function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符�
 							<td>{{$tb->tb_id}}</td>
 							<td class="post_l"><a href="">{{$tb->tb_name}} ({{$tb->tb_namecn}})</a></td>
 							<td>
-								[<a href="">管理字段</a>]
-								[<a href="">管理系统模型</a>]
-								[<a href="">管理分表</a>]
+								[<a href="{{ url('admin/modTb/') }}/{{$tb->tb_id}}/fields">管理字段</a>]
+								[<a href="{{ url('admin/mods') }}/{{$tb->tb_id}}/list">管理系统模型</a>]
+								[<a href="{{url('admin/modTb/')}}/{{ $tb->tb_id }}/septb">管理分表</a>]
 							</td>
 							<td>
 								[<a href="{{ url('admin/modTb/setDefTb/') }}/{{ $tb->tb_id }}">设为默认表</a>]
@@ -55,9 +55,10 @@ function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符�
 	<div class="blank5"></div>
 </div>
 <script>
-	if("{{session('msg')}}"){
+	var msg="{{session('msg')}}";
+	if(msg.length>0){
 		// layer.msg("{{session('msg')}}");//最简单形式
-		layer.msg("{{session('msg')}}",{
+		layer.msg(msg,{
 			shade: 0.3,
 			shadeClose:true,
 			time:1200

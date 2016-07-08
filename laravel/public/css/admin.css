@@ -20,6 +20,7 @@ button,.subm_btns{border-radius:5px;border:none;color:#f2f2f2;background:#1ABC9C
 .clear{clear: both;}
 .clearspan{clear:both;display:block;}
 .error{color:#ff0000;}
+.div_th{background:#1ABC9C;color:#f2f2f2;padding:1px 0;}
 /*body{background:#8FDABA;}*/
 .submits{/*background:#CCE8CF;color:#CCE8CF;*/border:none;border-radius:3px;padding:0 6px;}
 .blank5{clear:both;height:5px;}
@@ -77,15 +78,16 @@ li#qucikitems{float: right;margin-right: 10px;}
 
 .main_body{margin-top:8px;}
 ul.body_menutab li{padding:0 15px;background:#1ABC9C;border-right:1px solid #C9F1FF;color:#f2f2f2;border-radius:3px;cursor:default;}
+ul.body_menutab li.menutab_link{cursor:pointer;}
 .wrap_post{border:1px solid #1ABC9C;padding:5px;margin-right: 5px;}
-table textarea{width:800px;height:350px;padding:3px 6px;background:#C7DFD1;}
+table textarea{width:680px;height:350px;padding:3px 6px;background:#C7DFD1;}
 #sysconf table textarea{width:600px;height:80px;padding:3px 6px;background:#C7DFD1;}
 /*#sysconf table td.post_r{text-align:left;}*/
 table.post_tb{width: 100%;}
 table.list_tb{text-align:center;}
 table.def_row_tb{text-align:center;}
 table.list_tb a{text-align:center;color:#16a085;}
-.tr_th th{background:#1ABC9C;padding:4px 0;color:#f2f2f2;}
+.tr_th th{background:#1ABC9C;padding:4px 0;color:#f2f2f2;font-size:14px;}
 table.list_tb td{color:#075A5F;}
 /*checkbox美化*/
 .c_box{display: none;}
@@ -180,7 +182,12 @@ td.post_r{/*width:120px;*/text-align:right;}
 td.post_c{/*width:120px;*/text-align:center;}
 /*各种型号的textare*/
 #area600 textarea{width:600px; height:120px;}
-
+#areah120 textarea{height:120px;}
+/*各种padding-left*/
+.pl5{padding-left: 5px;}
+.pl10{padding-left: 10px;}
+/*各种input text*/
+.text60{width:60px;}
 /*分页样式*/
 #listpage .pagination{margin-left: 20px;}
 #listpage .pagination li{margin: 2px;}
@@ -188,5 +195,6 @@ td.post_c{/*width:120px;*/text-align:center;}
 #listpage .pagination li span{padding:2px 8px;color:#fff;}
 .active,.disabled{background:darkcyan;border-radius:4px;}
 
-
+/*标题字段特殊属性*/
+.f_attr{font-size:14px;}
 

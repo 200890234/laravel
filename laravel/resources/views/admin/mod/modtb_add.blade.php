@@ -38,7 +38,7 @@ function loopWithChar($arr,$char){//循环数组 通过分隔符显示为字符�
 					<tr>
 						<td>数据表名：</td>
 						<td>
-							{{$prefix}} ecms_ <input type="text" class="input300" name="tb_name" id="tb_name" value="{{$data->tb_name or old('tb_name')}}{{$copyer->tb_name or ''}}">&nbsp;*(如:news,只能由字母、数字组成)
+							<span style="font-size:16px;">{{$prefix}}</span>&nbsp;<input type="text" class="input300" name="tb_name" id="tb_name" value="{{$data->tb_name or old('tb_name')}}{{$copyer->tb_name or ''}}">&nbsp;*(如:news,只能由字母、数字组成)
 						</td>
 					</tr>
 					<tr>

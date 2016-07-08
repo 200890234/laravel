@@ -1735,9 +1735,9 @@ function ChangeDataTableF($add,$userid,$username){
 		$b=1;
 		$newstart=$r['id'];
 		//表名
-		$infotb=ReturnInfoMainTbname($tbname,$r['checked']);
-		$infor=$empire->fetch1("select stb".$selectf." from ".$infotb." where id='$r[id]'");
-		$infodatatb=ReturnInfoDataTbname($tbname,$r['checked'],$infor['stb']);
+		$infotb=ReturnInfoMainTbname($tbname,$r['checked']);//返回信息主表
+		$infor=$empire->fetch1("select stb".$selectf." from ".$infotb." where id='$r[id]'");//stb是存放的副表名
+		$infodatatb=ReturnInfoDataTbname($tbname,$r['checked'],$infor['stb']);//返回信息副表
 		if($fr[tbdataf])//副表
 		{
 			$finfor=$empire->fetch1("select ".$f." from ".$infodatatb." where id='$r[id]'");

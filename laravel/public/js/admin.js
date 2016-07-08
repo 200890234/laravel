@@ -120,13 +120,43 @@ $(function(){
 	$(".ajaxDel").click(function(e) {
 		e.preventDefault();
 		var cur=$(this);
+		var deltext=cur.attr("deltext");
+		if(!deltext){
+			deltext="确认删除？";
+		}
 		//删除确认
-		layer.confirm("确认删除？",function(index){
+		layer.confirm(deltext,function(){
 			//ajax提交删除请求
 			var url=cur.prop("href");
 			var token=cur.attr('token');
 			var d={"_method":"delete","_token":token};
 			$.post(url, d, function(data) {
+				layer.msg(data,{
+					shade: 0.3,
+					shadeClose:true,
+					time:1200
+				},function(){
+					location.reload();
+				});
+			});			
+		})
+	});
+	// 单个drop数据表ajax
+	$(".ajaxDrop").click(function(e) {
+		e.preventDefault();
+		var cur=$(this);
+		var deltext=cur.attr("deltext");
+		if(!deltext){
+			deltext="确认删除？";
+		}
+		//删除确认
+		layer.confirm(deltext,function(){
+			//ajax提交删除请求
+			var url=cur.prop("href");
+			var token=cur.attr('token');
+			var d={"_method":"post","_token":token};
+			$.post(url, d, function(data) {
+				// console.log(data);return;
 				layer.msg(data,{
 					shade: 0.3,
 					shadeClose:true,

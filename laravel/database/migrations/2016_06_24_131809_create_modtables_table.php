@@ -19,8 +19,8 @@ class CreateModtablesTable extends Migration
             $table->text('tb_intro')->comment('数据表简介')->nullable();;
             $table->integer('tb_isdefault')->default(0)->comment('是否默认表 1为默认，0为非默认');
             $table->text('tb_septbs')->comment('分表集合')->nullable();;
-            $table->string('tb_def_septb',20)->comment('默认分表')->nullable();;
-            $table->integer('tb_def_modid')->comment('默认系统模型ID')->nullable();;
+            $table->integer('tb_def_septb')->default(0)->comment('默认分表id')->nullable();;
+            $table->integer('tb_def_modid')->default(0)->comment('默认系统模型ID')->nullable();;
             $table->timestamps();
         });
     }
